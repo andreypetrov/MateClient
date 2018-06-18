@@ -45,6 +45,20 @@ module.exports = {
       optionalDependencies: ['test/unit/index.js']
     }],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
+    // added by Andrey Petrov
+    'import/no-unresolved': 'off',
+    'no-console': 'off',
+    'spaced-comment': 'off',
+    'linebreak-style': 'off',
+    'object-curly-spacing': ['error', 'never'],
+    'indent': 'off',
+    'vue/script-indent': ['error', 2, {
+      'baseIndent': 1,
+      'switchCase': 1,
+    }],
+    'no-underscore-dangle': [2, { 'allow': ['___MSFVALUE'] }],
+    'function-paren-newline': ['error', 'consistent']
   }
 }

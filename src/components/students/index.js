@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import template from './template.html';
-import AddStudent from './addstudent/';
+import AddStudent from './AddStudent';
 import StudentsList from './studentslist/';
 
 export default Vue.extend({
