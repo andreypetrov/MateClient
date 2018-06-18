@@ -1,0 +1,22 @@
+<template>
+  <div class="container pt-3">
+    <div class="row">
+      <div class="col">
+        <add-student></add-student>
+      </div>
+      <div class="col-8">
+        <students-list></students-list>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+    export default {
+        name: "Students"
+    }
+</script>
+
+<style scoped>
+
+</style>
