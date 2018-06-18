@@ -12,7 +12,7 @@ export default Vue.component('add-student', {
   },
   methods: {
     addStudent() {
-      console.log('add student');
+
     },
   },
 });
