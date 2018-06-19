@@ -2,9 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import router from './router';
-import './assets/theme.scss';
-import Loader from './components/loader/';
-import LoadingState from './config/loading-state';
+import './assets/styles.scss';
+import Loader from './components/loader/Loader';
 
 Vue.config.productionTip = false;
 
@@ -14,17 +13,6 @@ new Vue({
   router,
   components: {
     Loader,
-  },
-  data() {
-    return {
-      isLoading: false,
-    };
-  },
-
-  created() {
-    LoadingState.$on('toggle', (isLoading) => {
-      this.isLoading = isLoading;
-    });
   },
 });
 

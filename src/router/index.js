@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Game from '@/components/game';
-import Navigation from '@/components/navigation';
-import Students from '@/components/students';
+import Navigation from '@/components/navigation/Navigation';
+import MTStudents from '@/components/students/Students';
 import Exams from '@/components/exams';
 
 Vue.use(Router);
@@ -21,7 +21,7 @@ export default new Router({
       name: 'Admin',
       components: {
         navigation: Navigation,
-        default: Students,
+        default: MTStudents,
       },
     },
     {

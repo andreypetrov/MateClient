@@ -1,6 +1,5 @@
 
-// Import custom font from Google
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+$fa-font-path: "~font-awesome/fonts";
 
 // Override / set color variables
 $white: #fff;
@@ -61,29 +60,3 @@ $font-family-base: $font-family-sans-serif;
 $enable-shadows: false;
 $enable-gradients: true;
 
-
-@import "node_modules/bootstrap/scss/bootstrap";
-
-body {
-  background: #555;
-}
-
-h3 {
-  color: #777;
-  font-weight: normal;
-  text-transform: uppercase;
-  line-height: 17px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  font-size: 11px;
-  margin:0;
-}
-
-.base-container {
-  border: 1px solid rgba(0,0,0,0.1);
-}
-
-.nav-link:hover, .router-link-active > .nav-link{
-  border-bottom: 3px solid #fff;
-  color: #fff;
-  background-color: #33ab61;
-}
