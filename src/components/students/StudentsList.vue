@@ -18,7 +18,7 @@
 <script>
   import MtContainer from '../common/Container';
   import MtStudentsListItem from './StudentsListItem';
-  import Api from '../../util/api';
+  // import NetworkClient from '../../api/api';
 
   export default {
     name: 'mt-students-list',
@@ -37,13 +37,13 @@
 
     methods: {
       fetchStudents() {
-        Api.fetch({
-          url: 'students',
-          success: (response) => {
-            console.log(response);
-            this.students = response;
-          },
-        });
+        // NetworkClient.request({
+        //   url: 'students',
+        //   success: (response) => {
+        //     console.log(response);
+        //     this.students = response;
+        //   },
+        // });
       },
     },
   };

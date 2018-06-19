@@ -11,7 +11,8 @@
   import MtButton from '../common/Button';
   import MtContainer from '../common/Container';
   import MtInput from '../common/Input';
-  import Api from '../../util/api';
+
+  import actions from '../../store/action-types';
 
   export default {
     data() {
@@ -23,17 +24,10 @@
     },
     methods: {
       click() {
-        Api.fetch({
-          method: 'post',
-          url: 'students',
-          data: {
-            name: this.name,
-            group: this.group,
-            avatar: this.avatar,
-          },
-          success: (response) => {
-            console.log(response);
-          },
+        this.$store.dispatch(actions.ADD_STUDENT, {
+          name: this.name,
+          group: this.group,
+          avatar: this.avatar,
         });
       },
     },

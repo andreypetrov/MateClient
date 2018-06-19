@@ -2,16 +2,14 @@ import axios from 'axios';
 
 const baseURL = 'http://localhost:8080/api/v1/';
 
-const Api = {
-
+export default {
   // todo add loader
   // todo add default error handler
-  fetch: (options = {}) => {
+  request: (options = {}) => {
     if (!options.url) {
       console.log('URL is required');
       return;
     }
-
     const data = Object.assign({
       method: 'get',
       baseURL,
@@ -24,10 +22,9 @@ const Api = {
         }
       })
       .catch((error) => {
-        console.log(error);
+        if (options.failure) {
+          options.failure(error);
+        }
     });
   },
-
 };
-
-export default Api;
