@@ -1,31 +1,20 @@
 import networkClient from './network-client';
 
 export default {
-  addStudent(data, success, failure) {
-    networkClient.request({
-      method: 'post',
-      url: 'students',
-      data,
-      success,
-      failure,
-    });
-  },
-
   getStudents(success, failure) {
-    networkClient.request({
-      method: 'get',
-      url: 'students',
-      success,
-      failure,
-    });
+    networkClient.get('students', success, failure);
   },
 
   getStudentById(id, success, failure) {
-    networkClient.request({
-      method: 'get',
-      url: `students/${id}`,
-      success,
-      failure,
-    });
+    networkClient.get(`students/${id}`, success, failure);
   },
+
+  addStudent(data, success, failure) {
+    networkClient.post('students', data, success, failure);
+  },
+
+  deleteStudentById(id, success, failure) {
+    networkClient.delete(`students/${id}`, success, failure);
+  },
+
 };
