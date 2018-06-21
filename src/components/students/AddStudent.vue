@@ -15,6 +15,7 @@
   import actions from '../../store/action-types';
 
   export default {
+    name: 'mt-add-student',
     data() {
       return {
         name: '',
