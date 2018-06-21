@@ -1,6 +1,6 @@
 <template>
   <div class="list-group-item p-2">
-    <img class="avatar" :src="avatar">
+    <img class="avatar" :src="getAvatar">
     <span class="user-info">
       <span class="user-group m-2 p-1">{{ group }}</span>
       <span class="user-name">{{ name }}</span>
@@ -9,9 +9,8 @@
           <i class="fa fa-bar-chart" aria-hidden="true"></i>
         </span>
         <span class="remove-student"
-              data-toggle="modal"
-              data-target="#mt-modal"
-              @click="openModal">
+              @click="setCurrentStudent"
+              v-b-modal.modalDeleteStudent>
           <i class="fa fa-times" aria-hidden="true"></i>
         </span>
       </div>
@@ -26,7 +25,6 @@
     name: 'mt-student-list-item',
     props: {
       avatar: {
-        default: '/static/images/avatar.png',
         type: String,
       },
       group: {
@@ -36,11 +34,19 @@
       name: String,
       id: String,
     },
+    computed: {
+      getAvatar() {
+        let avatar = this.avatar;
+        if (!avatar) {
+          avatar = '/static/images/avatar.png';
+        }
+        return avatar;
+      },
+    },
     methods: {
-      openModal() {
+      setCurrentStudent() {
         const student = this.$store.getters.getStudentById(this.id);
         this.$store.commit(mutations.SET_CURRENT_STUDENT, student);
-        this.$emit('openModal');
       },
     },
   };

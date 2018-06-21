@@ -1,5 +1,6 @@
 import mutations from './mutation-types';
 import actions from './action-types';
+import getters from './getters';
 import dataService from '../api/data-service';
 
 export default {
@@ -12,6 +13,21 @@ export default {
         // and then unrolling the commit on error, and only updating the _id on success
 
         commit(mutations.ADD_STUDENT, responseStudent);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
+  [actions.DELETE_STUDENT_BY_ID]({commit, state}, studentId) {
+    commit(mutations.SET_LOADER, true);
+    dataService.deleteStudentById(
+      studentId,
+      () => {
+        const remainingStudents = getters.getRemainingStudents(state, studentId);
+        commit(mutations.SET_STUDENTS, remainingStudents);
         commit(mutations.SET_LOADER, false);
       },
       (error) => {

@@ -16,14 +16,15 @@
 
       </ul>
     </mt-container>
-    <mt-modal v-if="showModal"
-              @onSubmit="removeStudent"
-              title="Изтрий ученик"
-              ok="Изтрий"
-              cancel="Затвори"
+    <b-modal id="modalDeleteStudent"
+             ref="modal"
+             title="Изтрий студент"
+             @ok="deleteStudent"
+             ok-title="Да"
+             cancel-title="Откажи"
     >
       <mt-confirm-delete-student :name="studentName"></mt-confirm-delete-student>
-    </mt-modal>
+    </b-modal>
   </div>
 </template>
 
@@ -31,7 +32,6 @@
   import MtContainer from '../common/Container';
   import MtSearchFilter from '../common/SearchFilter';
   import MtStudentsListItem from './StudentsListItem';
-  import MtModal from '../common/Modal';
   import MtConfirmDeleteStudent from '../students/ConfirmDeleteStudent';
   import actions from '../../store/action-types';
 
@@ -41,7 +41,6 @@
       MtContainer,
       MtSearchFilter,
       MtStudentsListItem,
-      MtModal,
       MtConfirmDeleteStudent,
     },
     data() {
@@ -69,14 +68,14 @@
         console.log('open modal');
         this.showModal = true;
       },
-      removeStudent() {
-
+      deleteStudent() {
+        this.$store.dispatch(actions.DELETE_STUDENT_BY_ID, this.$store.state.currentStudent._id);
       },
     },
   };
 
 </script>
 
-<style scoped>
+<style>
 
 </style>

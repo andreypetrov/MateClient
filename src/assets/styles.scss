@@ -9,3 +9,28 @@
 body {
   background: #555;
 }
+.modal-content {
+  border-radius: 0;
+}
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #b9b7b7;
+  min-height: 16.42857143px;
+  background: #3fc378;
+  color: #fff;
+  font-weight: normal;
+  border-radius: 0;
+}
+.modal-footer {
+  margin-top: 15px;
+  padding: 8px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f3f3f3;
+}
