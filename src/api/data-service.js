@@ -10,10 +10,20 @@ export default {
       failure,
     });
   },
+
   getStudents(success, failure) {
     networkClient.request({
       method: 'get',
       url: 'students',
+      success,
+      failure,
+    });
+  },
+
+  getStudentById(id, success, failure) {
+    networkClient.request({
+      method: 'get',
+      url: `students/${id}`,
       success,
       failure,
     });

@@ -30,4 +30,19 @@ export default {
       },
     );
   },
+  [actions.GET_STUDENT_BY_ID]({commit}) {
+    commit(mutations.SET_LOADER, true);
+    dataService.getStudents(
+      (responseStudent) => {
+        //TODO perhaps consider a separate mutator,
+        // because this one is used in the students admin section of the app
+        commit(mutations.SET_CURRENT_STUDENT, responseStudent);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
 };
