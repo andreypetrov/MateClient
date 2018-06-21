@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const baseURL = '/api/v1/';
+import constants from '../constants';
 
 export default {
   // todo add default error handler'
@@ -35,9 +34,10 @@ export default {
       console.log('URL is required');
       return;
     }
+    console.log(constants);
     const data = Object.assign({
       method: 'get',
-      baseURL,
+      baseURL: constants.baseURL,
     }, options);
 
     axios(data)
