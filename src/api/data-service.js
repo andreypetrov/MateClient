@@ -10,4 +10,12 @@ export default {
       failure,
     });
   },
+  getStudents(success, failure) {
+    networkClient.request({
+      method: 'get',
+      url: 'students',
+      success,
+      failure,
+    });
+  },
 };

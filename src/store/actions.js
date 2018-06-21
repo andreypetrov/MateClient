@@ -17,4 +17,17 @@ export default {
       },
     );
   },
+  [actions.GET_STUDENTS]({commit}) {
+    commit(mutations.SET_LOADER, true);
+    dataService.getStudents(
+      (responseStudents) => {
+        commit(mutations.SET_STUDENTS, responseStudents);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
 };

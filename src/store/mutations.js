@@ -7,4 +7,10 @@ export default {
   [mutations.ADD_STUDENT](state, student) {
     state.students.push(student);
   },
+  [mutations.SET_STUDENTS](state, students) {
+    state.students = students;
+  },
+  [mutations.SET_CURRENT_STUDENT](state, student) {
+    state.currentStudent = student;
+  },
 };

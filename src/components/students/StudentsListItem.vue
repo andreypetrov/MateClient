@@ -10,8 +10,8 @@
         </span>
         <span class="remove-student"
               data-toggle="modal"
-              data-target="#remove-user-modal"
-              @click="click">
+              data-target="#mt-modal"
+              @click="openModal">
           <i class="fa fa-times" aria-hidden="true"></i>
         </span>
       </div>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+  import mutations from '../../store/mutation-types';
+
   export default {
     name: 'mt-student-list-item',
     props: {
@@ -35,8 +37,10 @@
       id: String,
     },
     methods: {
-      click() {
-        this.$emit('click');
+      openModal() {
+        const student = this.$store.getters.getStudentById(this.id);
+        this.$store.commit(mutations.SET_CURRENT_STUDENT, student);
+        this.$emit('openModal');
       },
     },
   };

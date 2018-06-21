@@ -3,7 +3,7 @@
          type="text"
          :placeholder="pholder"
          :value="text"
-         v-on:input="input"/>
+         @input="input"/>
 </template>
 
 <script>
