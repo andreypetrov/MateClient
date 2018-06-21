@@ -26,7 +26,7 @@
     name: 'mt-student-list-item',
     props: {
       avatar: {
-        default: '/assets/img/avatar.png',
+        default: '/static/images/avatar.png',
         type: String,
       },
       group: {
