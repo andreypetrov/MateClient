@@ -1,6 +1,8 @@
 <template>
   <div>
-    QUESTIONNAIRE
+    <div>QUESTIONNAIRE</div>
+
+    CURRENT STUDENT:
     <div>{{student.name}}</div>
     ALL EXAMS:
     <div v-bind:key="exam._id" v-for="exam in exams">id: {{exam._id}} {{exam.subjectName}}</div>
