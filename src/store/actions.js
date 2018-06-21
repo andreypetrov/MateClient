@@ -30,9 +30,10 @@ export default {
       },
     );
   },
-  [actions.GET_STUDENT_BY_ID]({commit}) {
+  [actions.GET_STUDENT_BY_ID]({commit}, id) {
     commit(mutations.SET_LOADER, true);
-    dataService.getStudents(
+    dataService.getStudentById(
+      id,
       (responseStudent) => {
         //TODO perhaps consider a separate mutator,
         // because this one is used in the students admin section of the app
