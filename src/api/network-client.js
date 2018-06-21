@@ -3,10 +3,11 @@ import constants from '../constants';
 
 export default {
   // todo add default error handler'
-  get(url, success, failure) {
+  get(url, success, failure, params) {
     this.request({
       method: 'get',
       url,
+      params,
       success,
       failure,
     });
@@ -34,7 +35,6 @@ export default {
       console.log('URL is required');
       return;
     }
-    console.log(constants);
     const data = Object.assign({
       method: 'get',
       baseURL: constants.baseURL,

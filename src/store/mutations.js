@@ -13,4 +13,10 @@ export default {
   [mutations.SET_CURRENT_STUDENT](state, student) {
     state.currentStudent = student;
   },
+  [mutations.SET_EXAMS](state, exams) {
+    state.exams = exams;
+  },
+  [mutations.SET_CURRENT_EXAM](state, exam) {
+    state.currentExam = exam;
+  },
 };

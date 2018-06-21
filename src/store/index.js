@@ -10,6 +10,10 @@ const state = {
   students: [],
   currentStudent: {},
   isLoading: false,
+  currentExam: {},
+  exams: [],
+  subjectCode: '01',
+  variant: 'Б',
 };
 
 const store = new Vuex.Store({

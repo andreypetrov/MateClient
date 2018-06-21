@@ -17,7 +17,7 @@ export default {
     networkClient.delete(`students/${id}`, success, failure);
   },
 
-  getExams(success, failure, options = {}) {
-
-  }
+  getExams(params, success, failure) {
+    networkClient.get('exams', success, failure, params);
+  },
 };

@@ -8,6 +8,9 @@ export default {
     dataService.addStudent(
       student,
       (responseStudent) => {
+        //TODO consider committing immediately before the network call
+        // and then unrolling the commit on error, and only updating the _id on success
+
         commit(mutations.ADD_STUDENT, responseStudent);
         commit(mutations.SET_LOADER, false);
       },
@@ -38,6 +41,34 @@ export default {
         //TODO perhaps consider a separate mutator,
         // because this one is used in the students admin section of the app
         commit(mutations.SET_CURRENT_STUDENT, responseStudent);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
+  [actions.GET_EXAMS]({commit}, params) {
+    commit(mutations.SET_LOADER, true);
+    dataService.getExams(
+      params,
+      (responseExam) => {
+        commit(mutations.SET_EXAMS, responseExam);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
+  [actions.GET_DEFAULT_EXAM]({commit, state}) {
+    commit(mutations.SET_LOADER, true);
+    dataService.getExams(
+      {subjectCode: state.subjectCode, variant: state.variant},
+      (responseExam) => {
+        commit(mutations.SET_CURRENT_EXAM, responseExam[0]);
         commit(mutations.SET_LOADER, false);
       },
       (error) => {
