@@ -5,9 +5,11 @@
     CURRENT STUDENT:
     <div>{{student.name}}</div>
     ALL EXAMS:
-    <div v-bind:key="exam._id" v-for="exam in exams">id: {{exam._id}} {{exam.subjectName}}</div>
+    <div v-bind:key="exam._id" v-for="exam in exams">
+      id: {{exam._id}} {{exam.subjectName}} {{exam.variant}}
+    </div>
     CURRENT EXAM:
-    <div>{{exam._id}} {{exam.subjectName}}</div>
+    <div>{{exam._id}} {{exam.subjectName}} {{exam.variant}}</div>
 
   </div>
 </template>
