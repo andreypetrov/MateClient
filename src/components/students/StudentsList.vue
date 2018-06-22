@@ -13,7 +13,6 @@
                                :name="student.name"
                                @openModal="openModal"
         ></mt-students-list-item>
-
       </ul>
     </mt-container>
     <b-modal id="modalDeleteStudent"
@@ -29,6 +28,7 @@
 </template>
 
 <script>
+  /*eslint no-underscore-dangle: 0*/
   import MtContainer from '../common/Container';
   import MtSearchFilter from '../common/SearchFilter';
   import MtStudentsListItem from './StudentsListItem';
@@ -57,11 +57,11 @@
       },
     },
     created() {
-      this.fetchStudents();
+      this.getStudents();
     },
 
     methods: {
-      fetchStudents() {
+      getStudents() {
         this.$store.dispatch(actions.GET_STUDENTS);
       },
       openModal() {

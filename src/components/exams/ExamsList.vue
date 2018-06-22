@@ -1,34 +1,37 @@
 <template>
-  <div class="container pt-3">
-    <div class="row">
-      <div class="col">
-        <b-tabs>
-          <b-tab active >
-            <template slot="title">
-              <i class="fa fa-list-alt exams-list-icon" aria-hidden="true"></i>Списък Изпити
-            </template>
-            <mt-exams-list></mt-exams-list>
-          </b-tab>
-          <b-tab title="second" >
-            <template slot="title">
-              <i class="fa fa-plus-circle add-exam-icon" aria-hidden="true"></i>Създай Изпит
-            </template>
-            I'm the second tab content
-          </b-tab>
-        </b-tabs>
-      </div>
-    </div>
+  <div>
+    <mt-exam-collapse
+      v-if="exams.length"
+      v-for="(exam) in exams"
+      :key="exam._id"
+      :id="exam._id"
+      :data="exam"
+    ></mt-exam-collapse>
   </div>
 </template>
 
 <script>
 
-  import MtExamsList from './ExamsList';
+  import MtExamCollapse from './ExamCollapse';
+  import actions from '../../store/action-types';
 
   export default {
-    name: 'mt-exams',
+    name: 'mt-exams-list',
     components: {
-      MtExamsList,
+      MtExamCollapse,
+    },
+    created() {
+      this.getExams();
+    },
+    computed: {
+      exams() {
+        return this.$store.state.exams;
+      },
+    },
+    methods: {
+      getExams() {
+        this.$store.dispatch(actions.GET_EXAMS);
+      },
     },
   };
 
@@ -38,6 +41,7 @@
   .nav-tabs {
     border-bottom:0;
     .nav-link {
+      border-radius: 0;
       margin-right: 1px;
       background-color: #dedede;
       padding-left: 35px;

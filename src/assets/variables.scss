@@ -1,19 +1,11 @@
-
 $fa-font-path: "~font-awesome/fonts";
 
 // Override / set color variables
 $white: #fff;
 $black: #000;
-$green: #329c4f;
-$blue: #0E7920;
-$orange: #f26c22;
-$yellow: #ffd925;
-$red: #e5001e;
-
 
 // Create grayscale
 $secondary: #dfdfdf;
-
 
 $gray: #3f3f3f;
 $gray-light: #7e7e7e;
@@ -21,11 +13,11 @@ $gray-lighter: #ededed;
 $gray-lightest: #fafafa;
 
 // Set brand colors
-$primary: $blue;
-$success: $green;
-$info: $yellow;
-$warning: $orange;
-$danger: $red;
+$primary: #666;
+$success: #329c4f;
+$info: #a7e1ff;
+$warning: #f26c22;
+$danger: #e5001e;
 
 // Override button colors
 $btn-info-color: darken($info, 45);
@@ -58,5 +50,5 @@ $font-family-base: $font-family-sans-serif;
 
 // Set global options
 $enable-shadows: false;
-$enable-gradients: true;
+$enable-gradients: false;
 
