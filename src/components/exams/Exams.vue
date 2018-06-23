@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <b-tabs>
-          <b-tab active >
+          <b-tab active>
             <template slot="title">
               <i class="fa fa-list-alt exams-list-icon" aria-hidden="true"></i>Списък Изпити
             </template>

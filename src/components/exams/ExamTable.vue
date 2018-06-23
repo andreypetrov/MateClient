@@ -1,36 +1,32 @@
 <template>
-  <div role="tablist">
-    <b-card no-body class="mb-1 rounded-0">
-      <b-card-header header-tag="header" class="p-0 rounded-0" role="tab">
-        <b-btn class="rounded-0 text-left"
-               block href="#"
-               v-b-toggle="'accordion-' + id"
-               variant="primary">
-          <span>{{data.subjectName}}</span>
-          <span
-            class="
-            variant
-            text-info
-            rounded bg-dark ml-3 pl-2 pr-2 pt-1 pb-1 font-weight-light "
-          >Вариант: {{data.variant}}
-          </span>
-        </b-btn>
-      </b-card-header>
-      <b-collapse :id="'accordion-' + id" accordion="my-accordion" role="tabpanel">
-        <b-card-body>
-          <p class="card-text">
-            I start opened because <code>visible</code> is <code>true</code>
-          </p>
-          <p class="card-text">
-
-          </p>
-        </b-card-body>
-      </b-collapse>
-    </b-card>
-  </div>
+  <b-table :fields="fields"
+           :items="items"
+           thClass="p-1"
+           class="table-bordered">
+    <template slot="text" slot-scope="data">
+      <mt-input :text="data.item.text" class="px-1 py-0"></mt-input>
+      <mt-input placeHolder="URL на картинка"
+                :text="data.item.imageUrl"
+                class="px-1 py-0"></mt-input>
+      <img v-if="data.item.imageUrl"
+           class="image-url"
+           :src="data.item.imageUrl">
+    </template>
+    <template slot="answers" slot-scope="data">
+        <div v-for="(answer) in data.item.answers"
+             :key="answer._id">
+          {{answer._id}})
+          <mt-input :text="answer.text"
+                    class="ml-2 px-1 py-0 d-inline-block answer-input"
+          ></mt-input>
+        </div>
+    </template>
+  </b-table>
 </template>
 
 <script>
+  import MtInput from '../common/Input';
+
   export default {
     name: 'mt-exam-table',
     methods: {
@@ -38,13 +34,30 @@
     },
     props: {
       id: String,
-      data: Object,
+      items: Array,
+    },
+    components: {
+      MtInput,
+    },
+    data() {
+      return {
+        fields: [
+          {key: '_id', label: 'ID'},
+          {key: 'category', label: 'Категория'},
+          {key: 'text', label: 'Въпрос'},
+          {key: 'answers', label: 'Отговори'},
+        ],
+      };
     },
   };
 </script>
 
 <style scoped>
-  .variant {
-    font-size:0.8rem;
+  .answer-input {
+    width:calc(100% - 50px);
+  }
+  .image-url {
+    max-width:100px;
+    max-height:100px;
   }
 </style>

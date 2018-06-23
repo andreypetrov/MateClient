@@ -18,7 +18,7 @@
       </b-card-header>
       <b-collapse :id="'accordion-' + id" accordion="my-accordion" role="tabpanel">
         <b-card-body>
-          <mt-exam-table></mt-exam-table>
+          <mt-exam-table :items="data.questions"></mt-exam-table>
         </b-card-body>
       </b-collapse>
     </b-card>

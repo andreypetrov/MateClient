@@ -1,7 +1,14 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
-import {Modal, Tabs, Collapse, Card, Button} from 'bootstrap-vue/es/components';
+import {
+  Modal,
+  Tabs,
+  Collapse,
+  Card,
+  Button,
+  ListGroup,
+  Table} from 'bootstrap-vue/es/components';
 import App from './App';
 import './assets/styles.scss';
 import router from './router';
@@ -12,6 +19,8 @@ Vue.use(Tabs);
 Vue.use(Collapse);
 Vue.use(Card);
 Vue.use(Button);
+Vue.use(Table);
+Vue.use(ListGroup);
 
 Vue.config.productionTip = false;
 
