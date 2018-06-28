@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-3">
+  <div class="container-fluid pt-3">
     <div class="row">
       <div class="col">
         <b-tabs>
@@ -13,7 +13,7 @@
             <template slot="title">
               <i class="fa fa-plus-circle add-exam-icon" aria-hidden="true"></i>Създай Изпит
             </template>
-            I'm the second tab content
+            <mt-add-exam></mt-add-exam>
           </b-tab>
         </b-tabs>
       </div>
@@ -24,11 +24,13 @@
 <script>
 
   import MtExamsList from './ExamsList';
+  import MtAddExam from './AddExam';
 
   export default {
     name: 'mt-exams',
     components: {
       MtExamsList,
+      MtAddExam,
     },
   };
 

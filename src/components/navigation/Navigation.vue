@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-success p-0">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="container">
+      <div class="container-fluid">
         <ul class="navbar-nav mr-auto">
           <router-link class="nav-item" tag="li" to="/admin" exact>
             <a class="nav-link pr-3"><i class="fa fa-users ml-1 mr-2"></i> Ученици</a>

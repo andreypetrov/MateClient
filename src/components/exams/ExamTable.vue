@@ -54,7 +54,7 @@
 
 <style scoped>
   .answer-input {
-    width:calc(100% - 50px);
+    width:calc(100% - 30px);
   }
   .image-url {
     max-width:100px;

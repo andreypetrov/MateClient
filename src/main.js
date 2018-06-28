@@ -8,6 +8,12 @@ import {
   Card,
   Button,
   ListGroup,
+  Form,
+  FormGroup,
+  FormSelect,
+  FormCheckbox,
+  FormRadio,
+  FormInput,
   Table} from 'bootstrap-vue/es/components';
 import App from './App';
 import './assets/styles.scss';
@@ -21,6 +27,12 @@ Vue.use(Card);
 Vue.use(Button);
 Vue.use(Table);
 Vue.use(ListGroup);
+Vue.use(FormGroup);
+Vue.use(FormSelect);
+Vue.use(FormCheckbox);
+Vue.use(FormRadio);
+Vue.use(Form);
+Vue.use(FormInput);
 
 Vue.config.productionTip = false;
 
