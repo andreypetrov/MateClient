@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit.prevent="submit" class="px-3 py-2 bg-light add-question-form">
+  <b-form @submit.prevent="submit" class="px-3 py-2 bg-light question">
     <div class="row">
       <div class="col">
         <mt-labeled-input label="Добави въпрос"
@@ -10,22 +10,27 @@
         <mt-labeled-input label="Картинка към въпроса"
                           :text="question.imageUrl"
                           placeholder="Въведи URL"
-        >
-        </mt-labeled-input>
+        ></mt-labeled-input>
       </div>
-      <mt-add-answers class="col" :form="question" @select="selectAnswer"></mt-add-answers>
+      <div class="col answers">
+        <mt-edit-radio-button-group label="Отговори"
+                                    v-model="question.answers"
+                                    @select="selectAnswer"
+                                    placeholder="Въведи отговор">
+        </mt-edit-radio-button-group>
+      </div>
     </div>
     <b-button type="submit" text-variant="gray-lighter">Добави</b-button>
   </b-form>
 </template>
 
 <script>
-  import MtAddAnswers from './AddAnswers';
   import MtLabeledInput from '../common/LabeledInput';
+  import MtEditRadioButtonGroup from '../common/EditRadioButtonGroup';
 
   export default {
     name: 'mt-add-question',
-    components: {MtLabeledInput, MtAddAnswers},
+    components: {MtEditRadioButtonGroup, MtLabeledInput},
     data() {
       return {
         question: this.defaultQuestion,
@@ -39,6 +44,7 @@
         this.$emit('add', this.question);
       },
       selectAnswer(correctAnswer) {
+        console.log('selected answer', correctAnswer);
         this.question.correctAnswer = correctAnswer;
       },
     },
@@ -46,10 +52,16 @@
 </script>
 
 <style scoped>
-  .add-question-form {
+  .question {
     font-size: 0.85rem;
     border: 5px solid #dee2e6;
     color: #888;
+  }
+
+  .answers {
+    padding: 15px 30px;
+    background: #ffffff;
+    border: 5px solid #dee2e6;
   }
 
 </style>

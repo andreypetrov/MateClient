@@ -13,7 +13,8 @@
 </template>
 
 <script>
- //TODO use uuid4 to generate unique ids for inputs, so they can be referenced by their labels for accessibility purposes
+ //TODO use uuid4 to generate unique ids for inputs,
+ // so they can be referenced by their labels for accessibility purposes
   export default {
     name: 'mt-labeled-input',
     props: {

@@ -1,12 +1,8 @@
 <template>
-  <b-form-group label="Отговори">
+  <b-form-group :label="label">
     <b-form-radio-group id="radio-group"
-                        name="answerGroup"
-                        @input="select">
-      <!--<div :key="item._id" v-for="item in items">-->
-        <!--<mt-radio-input :item="item" :placeholder="placeholder" @input="input(item._id)">-->
-        <!--</mt-radio-input>-->
-      <!--</div>-->
+                        @input="select"
+                        class="answer-form">
       <div class="row">
         <div :key="item._id" v-for="item in items">
           <span class="d-inline-block id">{{item._id}})</span>
@@ -25,7 +21,7 @@
   import MtInput from '../common/Input';
 
   export default {
-    name: 'mt-add-answers',
+    name: 'mt-edit-radio-button-group',
     components: {MtInput, MtRadioInput},
     data() {
       return {
@@ -34,6 +30,7 @@
     },
     props: {
       placeholder: String,
+      label: String,
       value: Array,
     },
     methods: {
@@ -43,7 +40,6 @@
         this.$emit('input', this.localAnswers);
       },
       select(event) { //propagate up the answer selection
-        console.log(this.localAnswers);
         this.$emit('select', event);
       },
     },
