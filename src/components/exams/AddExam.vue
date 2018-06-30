@@ -4,18 +4,18 @@
       <mt-add-exam-details class="col" v-model="exam">
       </mt-add-exam-details>
       <div class="col">
-        <b-button type="submit" variant="primary">Запази</b-button>
-      </div>
+      <b-button type="submit" variant="primary">Запази</b-button>
     </div>
+    </div>
+    <!-- TODO create a separate component to show every question -->
     <div v-bind:key="index" v-for="(question, index) in exam.questions">
         {{question.text}} {{question.correctAnswer}}
     </div>
-    <mt-add-question v-model="newQuestion" @add="add"></mt-add-question>
+    <mt-add-question :defaultQuestion="newQuestion" @add="add"></mt-add-question>
   </b-form>
 </template>
 
 <script>
-
   import MtAddQuestion from './AddQuestion';
   import MtAddExamDetails from './AddExamDetails';
   import DefaultQuestion from './DefaultQuestion';

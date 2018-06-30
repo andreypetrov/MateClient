@@ -28,26 +28,11 @@
     components: {MtLabeledInput, MtAddAnswers},
     data() {
       return {
-        question: {
-          text: 'Кой е най-високият връх в България?',
-          imageUrl: ' http://www.westcoastpeaks.com/pics11B/bulg090711_038summitinview.jpg',
-          correctAnswer: 'б',
-          answers: [{
-            _id: 'а',
-            text: '',
-          }, {
-            _id: 'б',
-            text: '',
-          }, {
-            _id: 'в',
-            text: '',
-          }, {
-            _id: 'г',
-            text: '',
-          },
-          ],
-        },
+        question: this.defaultQuestion,
       };
+    },
+    props: {
+      defaultQuestion: Object,
     },
     methods: {
       submit() {
