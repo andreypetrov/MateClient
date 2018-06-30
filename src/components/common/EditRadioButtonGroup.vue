@@ -4,9 +4,9 @@
                         @input="select"
                         class="answer-form">
       <div class="row">
-        <div :key="item._id" v-for="item in items">
+        <div :key="item._id" v-for="item in items" class="holder mb-2">
           <span class="d-inline-block id">{{item._id}})</span>
-          <b-form-radio :value="item._id" class="mr-0 answer-radio">
+          <b-form-radio :value="item._id" class="mr-0 radio">
             <mt-input :placeholder="placeholder" :value="item.text">
             </mt-input>
           </b-form-radio>
@@ -17,12 +17,11 @@
 </template>
 
 <script>
-  import MtRadioInput from '../common/RadioInput';
   import MtInput from '../common/Input';
 
   export default {
     name: 'mt-edit-radio-button-group',
-    components: {MtInput, MtRadioInput},
+    components: {MtInput},
     data() {
       return {
         items: this.value,
@@ -47,10 +46,21 @@
 </script>
 
 <style scoped>
-  .answer-form {
-    padding: 15px 10px;
-    background: #ffffff;
-    border: 5px solid #dee2e6;
+  .holder {
+    padding: 3px 3px 3px 5px;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+  }
+  .holder-selected {
+    background: #d8ffe5;
+    border: 1px solid #c8f3d6;
   }
 
+  .radio {
+    width: calc(100% - 20px);
+  }
+
+  .id {
+    min-width: 15px;
+  }
 </style>

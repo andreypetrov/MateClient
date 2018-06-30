@@ -7,7 +7,8 @@
       <b-button type="submit" variant="primary">Запази</b-button>
     </div>
     </div>
-    <!-- TODO create a separate component to show every question. this is here only for demoing purposes -->
+    <!-- TODO create a separate component to show every question.
+    this is here only for demoing purposes -->
     <div v-bind:key="index" v-for="(question, index) in exam.questions">
         {{question.text}} {{question.correctAnswer}}
     </div>
