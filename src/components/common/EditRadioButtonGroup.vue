@@ -7,7 +7,7 @@
         <div :key="item._id" v-for="item in items" class="holder mb-2">
           <span class="d-inline-block id">{{item._id}})</span>
           <b-form-radio :value="item._id" class="mr-0 radio">
-            <mt-input :placeholder="placeholder" :value="item.text">
+            <mt-input :placeholder="placeholder" v-model="item.text" @input="input">
             </mt-input>
           </b-form-radio>
         </div>
@@ -33,10 +33,8 @@
       value: Array,
     },
     methods: {
-      input(itemId) {
-        console.log('inputted', itemId);
-        this.$emit('input', this.localAnswers);
-        this.$emit('input', this.localAnswers);
+      input() {
+        this.$emit('input', this.items);
       },
       select(event) { //propagate up the answer selection
         this.$emit('select', event);

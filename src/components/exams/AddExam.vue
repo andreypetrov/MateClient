@@ -39,11 +39,12 @@
     },
     methods: {
       submit() {
-        alert(JSON.stringify(this.exam));
+        // alert(JSON.stringify(this.exam));
       },
-      add(newQuestion) {
-        this.exam.questions.push(newQuestion);
+      add(question) {
+        //TODO figure out why resetting of the newQuestion does not work here
         this.newQuestion = new DefaultQuestion();
+        this.exam.questions.push(Object.assign({}, question));
       },
     },
   };

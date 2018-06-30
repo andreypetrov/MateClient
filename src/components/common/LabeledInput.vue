@@ -4,7 +4,7 @@
   >
     <b-form-input id="to_be_replaced_by_generated_unique_id"
                   type="text"
-                  :value="text"
+                  :value="value"
                   required
                   :placeholder="placeholder"
                   @input="input">
@@ -19,7 +19,7 @@
     name: 'mt-labeled-input',
     props: {
       label: String,
-      text: String,
+      value: String,
       placeholder: String,
     },
     methods: {

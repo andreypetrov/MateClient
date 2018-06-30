@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col">
         <mt-labeled-input label="Добави въпрос"
-                          :text="question.text"
+                          v-model="question.text"
                           placeholder="Въведи въпрос"
         >
         </mt-labeled-input>
         <mt-labeled-input label="Картинка към въпроса"
-                          :text="question.imageUrl"
+                          v-model="question.imageUrl"
                           placeholder="Въведи URL"
         ></mt-labeled-input>
       </div>
