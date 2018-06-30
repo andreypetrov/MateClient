@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <mt-labeled-input class="col"
+  <div class="row align-items-end">
+    <mt-labeled-input class="col-md-8"
                       label="Предмет"
                       :text="value.subjectName"
                       placeholder="Въведи предмет"
                       @input="inputSubjectName">
     </mt-labeled-input>
-    <mt-labeled-input class="col"
+    <mt-labeled-input class="col-md-2"
                       label="Вариант"
                       :text="value.variant"
                       placeholder="Въведи вариант"
                       @input="inputVariant">
     </mt-labeled-input>
+    <div class="col-md text-right">
+      <slot></slot>
+    </div>
   </div>
 </template>
 

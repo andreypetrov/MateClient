@@ -1,7 +1,7 @@
 <template>
   <b-form @submit.prevent="submit" class="px-3 py-2 bg-light question">
     <div class="row">
-      <div class="col">
+      <div class="col-md">
         <mt-labeled-input label="Добави въпрос"
                           v-model="question.text"
                           placeholder="Въведи въпрос"
@@ -12,7 +12,7 @@
                           placeholder="Въведи URL"
         ></mt-labeled-input>
       </div>
-      <div class="col answers">
+      <div class="col-md">
         <mt-edit-radio-button-group label="Отговори"
                                     v-model="question.answers"
                                     @select="selectAnswer"
@@ -54,14 +54,7 @@
 <style scoped>
   .question {
     font-size: 0.85rem;
-    border: 5px solid #dee2e6;
+    border: 5px solid #b8d4c1;
     color: #888;
   }
-
-  .answers {
-    padding: 15px 30px;
-    background: #ffffff;
-    border: 5px solid #dee2e6;
-  }
-
 </style>

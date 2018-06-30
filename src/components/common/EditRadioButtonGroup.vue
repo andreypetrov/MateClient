@@ -4,11 +4,16 @@
                         @input="select"
                         class="answer-form">
       <div class="row">
-        <div :key="item._id" v-for="item in items" class="holder mb-2">
+        <div :key="item._id" v-for="item in items" class="holder mb-2"
+             v-bind:class="getSelectedClass(item._id)">
           <span class="d-inline-block id">{{item._id}})</span>
           <b-form-radio :value="item._id" class="mr-0 radio">
-            <mt-input :placeholder="placeholder" v-model="item.text" @input="input">
-            </mt-input>
+
+            <b-form-input v-model="item.text"
+                          type="text"
+                          @input="input"
+                          size="sm"
+                          :placeholder="placeholder"></b-form-input>
           </b-form-radio>
         </div>
       </div>
@@ -22,9 +27,11 @@
   export default {
     name: 'mt-edit-radio-button-group',
     components: {MtInput},
+
     data() {
       return {
         items: this.value,
+        selected: '',
       };
     },
     props: {
@@ -37,28 +44,32 @@
         this.$emit('input', this.items);
       },
       select(event) { //propagate up the answer selection
+        this.selected = event;
         this.$emit('select', event);
+      },
+      getSelectedClass(id) {
+        if (id === this.selected) {
+          return 'active';
+        }
+        return '';
       },
     },
   };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .holder {
     padding: 3px 3px 3px 5px;
     border-radius: 0.25rem;
     border: 1px solid transparent;
   }
-  .holder-selected {
-    background: #d8ffe5;
-    border: 1px solid #c8f3d6;
-  }
-
-  .radio {
-    width: calc(100% - 20px);
+  .active {
+    background: #fdf569;
+    border: 1px solid #ceb220;
   }
 
   .id {
     min-width: 15px;
+    text-transform: uppercase;
   }
 </style>
