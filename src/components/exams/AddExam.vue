@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit.prevent="submit" v-if="show">
+  <b-form @submit.prevent="submit">
     <div class="row">
       <mt-add-exam-details class="col" v-model="exam">
       </mt-add-exam-details>
@@ -7,8 +7,10 @@
         <b-button type="submit" variant="primary">Запази</b-button>
       </div>
     </div>
+    <div v-bind:key="index" v-for="(question, index) in exam.questions">
+        {{question.text}} {{question.correctAnswer}}
+    </div>
     <mt-add-question v-model="newQuestion" @add="add"></mt-add-question>
-  </b-form>
   </b-form>
 </template>
 
@@ -16,6 +18,7 @@
 
   import MtAddQuestion from './AddQuestion';
   import MtAddExamDetails from './AddExamDetails';
+  import DefaultQuestion from './DefaultQuestion';
 
   export default {
     name: 'mt-add-exam',
@@ -26,8 +29,7 @@
           variant: 'A',
           questions: [],
         },
-        show: true,
-        newQuestion: {},
+        newQuestion: new DefaultQuestion(),
       };
     },
     components: {
@@ -39,8 +41,8 @@
         alert(JSON.stringify(this.exam));
       },
       add(newQuestion) {
-        alert(newQuestion);
-        this.newQuestion = {};
+        this.exam.questions.push(newQuestion);
+        this.newQuestion = new DefaultQuestion();
       },
     },
   };

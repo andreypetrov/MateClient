@@ -13,7 +13,7 @@
         >
         </mt-labeled-input>
       </div>
-      <mt-add-answers class="col" :form="question"></mt-add-answers>
+      <mt-add-answers class="col" :form="question" @select="selectAnswer"></mt-add-answers>
     </div>
     <b-button type="submit" text-variant="gray-lighter">Добави</b-button>
   </b-form>
@@ -29,7 +29,6 @@
     data() {
       return {
         question: {
-          selected: 'а',
           text: 'Кой е най-високият връх в България?',
           imageUrl: ' http://www.westcoastpeaks.com/pics11B/bulg090711_038summitinview.jpg',
           correctAnswer: 'б',
@@ -45,14 +44,17 @@
           }, {
             _id: 'г',
             text: '',
-          }
+          },
           ],
         },
       };
     },
     methods: {
       submit() {
-        alert(JSON.stringify(this.question));
+        this.$emit('add', this.question);
+      },
+      selectAnswer(correctAnswer) {
+        this.question.correctAnswer = correctAnswer;
       },
     },
   };
