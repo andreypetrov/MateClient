@@ -7,12 +7,13 @@
         <div :key="item._id" v-for="item in items" class="holder mb-2"
              v-bind:class="getSelectedClass(item._id)">
           <span class="d-inline-block id">{{item._id}})</span>
-          <b-form-radio :value="item._id" class="mr-0 radio">
+          <b-form-radio :value="item._id" class="mr-0">
 
             <b-form-input v-model="item.text"
                           type="text"
                           @input="input"
                           size="sm"
+                          class="radio-input"
                           :placeholder="placeholder"></b-form-input>
           </b-form-radio>
         </div>
@@ -59,17 +60,21 @@
 
 <style scoped lang="scss">
   .holder {
-    padding: 3px 3px 3px 5px;
+    padding: 6px 3px 3px 5px;
     border-radius: 0.25rem;
     border: 1px solid transparent;
+    margin-left:10px;
   }
   .active {
     background: #fdf569;
     border: 1px solid #ceb220;
   }
-
+  .radio-input {
+    margin-top: -3px;
+  }
   .id {
     min-width: 15px;
     text-transform: uppercase;
   }
+
 </style>
