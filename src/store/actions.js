@@ -65,6 +65,33 @@ export default {
       },
     );
   },
+  [actions.GET_RESULTS]({commit}) {
+    commit(mutations.SET_LOADER, true);
+    dataService.getResults(
+      (responseResults) => {
+        commit(mutations.SET_RESULTS, responseResults);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
+  [actions.GET_STUDENT_RESULTS]({commit}, params) {
+    commit(mutations.SET_LOADER, true);
+    dataService.getStudentResults(
+      params,
+      (responseStudentResults) => {
+        commit(mutations.SET_STUDENT_RESULTS, responseStudentResults);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
   [actions.GET_EXAMS]({commit}, params) {
     commit(mutations.SET_LOADER, true);
     dataService.getExams(

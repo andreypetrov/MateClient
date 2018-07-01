@@ -5,7 +5,9 @@
       <span class="user-group m-2 p-1">{{ group }}</span>
       <span class="user-name">{{ name }}</span>
       <div class="buttons-container">
-        <span class="view-results mr-2 p-1">
+        <span class="view-results mr-2 p-1"
+              @click="showStudentResult(id)"
+        >
           <i class="fa fa-bar-chart" aria-hidden="true"></i>
         </span>
         <span class="remove-student"
@@ -48,6 +50,12 @@
         const student = this.$store.getters.getStudentById(this.id);
         this.$store.commit(mutations.SET_CURRENT_STUDENT, student);
       },
+      showStudentResult(studentId) {
+        this.$router.push({
+          path: 'results',
+          query: {studentId},
+        });
+      },
     },
   };
 </script>
@@ -75,17 +83,20 @@
     margin-left: 60px;
     line-height: 47px;
   }
+
   .user-group {
     color: #289e9b;
     background-color: white;
     border-radius: 4px;
     border: 1px solid #e6e6e6;
   }
+
   .buttons-container {
-    position:absolute;
-    right:20px;
-    top:10px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
   }
+
   .view-results {
     border-radius: 50%;
     background-color: #2b994f;
@@ -94,6 +105,7 @@
     color: #fff;
     cursor: pointer;
   }
+
   .remove-student {
     border-radius: 50%;
     background-color: #c5c5c5;

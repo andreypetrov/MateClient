@@ -12,6 +12,8 @@ const state = {
   isLoading: false,
   currentExam: {},
   exams: [],
+  results: [],
+  studentResults: [],
   subjectCode: '01',
   variant: 'Б',
 };
