@@ -5,7 +5,7 @@
         <b-btn class="rounded-0 text-left"
                block href="#"
                v-b-toggle="'accordion-' + id"
-               variant="primary">
+               variant="light">
           <span>{{data.subjectName}}</span>
           <span
             class="

@@ -3,7 +3,7 @@
     <mt-input pholder="Име" v-model="name"></mt-input>
     <mt-input pholder="Клас" v-model="group"></mt-input>
     <mt-input pholder="Аватар" v-model="avatar"></mt-input>
-    <mt-button @click="click" title="Добави"></mt-button>
+    <b-btn block @click="click" variant="success">Добави</b-btn>
   </mt-container>
 </template>
 
