@@ -6,8 +6,11 @@
           <router-link class="nav-item" tag="li" to="/admin" exact>
             <a class="nav-link pr-3"><i class="fa fa-users ml-1 mr-2"></i> Ученици</a>
           </router-link>
-          <router-link class="nav-item pr-3" tag="li" to="/exams" exact>
+          <router-link class="nav-item" tag="li" to="/exams" exact>
             <a class="nav-link"><i class="fa fa-file-text-o  ml-1 mr-2"></i> Изпити</a>
+          </router-link>
+          <router-link class="nav-item" tag="li" to="/results" exact>
+            <a class="nav-link"><i class="fa fa-bar-chart  ml-1 mr-2"></i> Резултати</a>
           </router-link>
         </ul>
       </div>

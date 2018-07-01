@@ -2,10 +2,10 @@
   <div>
     <mt-container header="Списък с ученици">
       <ul class="list-group">
-        <mt-search-filter></mt-search-filter>
-        <p v-show="!students.length" class="text-center p-3">Добави ученици в списъка</p>
-        <mt-students-list-item v-if="students.length"
-                               v-for="(student) in students"
+        <mt-search-filter v-model="searchName"></mt-search-filter>
+        <p v-show="!filteredStudents.length" class="text-center p-3">Добави ученици в списъка</p>
+        <mt-students-list-item v-if="filteredStudents.length"
+                               v-for="(student) in filteredStudents"
                                :key="student._id"
                                :id="student._id"
                                :avatar="student.avatar"
@@ -46,11 +46,14 @@
     data() {
       return {
         showModal: false,
+        searchName: '',
       };
     },
     computed: {
-      students() {
-        return this.$store.state.students;
+      filteredStudents() {
+        const searchVal = this.searchName.toLowerCase();
+        const students = this.$store.state.students;
+        return students.filter(student => student.name.toLowerCase().indexOf(searchVal) !== -1);
       },
       studentName() {
         return this.$store.state.currentStudent.name;
@@ -59,13 +62,11 @@
     created() {
       this.getStudents();
     },
-
     methods: {
       getStudents() {
         this.$store.dispatch(actions.GET_STUDENTS);
       },
       openModal() {
-        console.log('open modal');
         this.showModal = true;
       },
       deleteStudent() {

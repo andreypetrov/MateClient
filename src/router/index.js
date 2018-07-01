@@ -4,6 +4,7 @@ import Game from '../components/game';
 import Navigation from '../components/navigation/Navigation';
 import MTStudents from '../components/students/Students';
 import Exams from '../components/exams/Exams';
+import Results from '../components/results/Results';
 import MTQuestionnaire from '../components/questionnaire/Questionnaire';
 
 Vue.use(Router);
@@ -31,6 +32,14 @@ export default new Router({
       components: {
         navigation: Navigation,
         default: Exams,
+      },
+    },
+    {
+      path: '/results',
+      name: 'Results',
+      components: {
+        navigation: Navigation,
+        default: Results,
       },
     },
     {

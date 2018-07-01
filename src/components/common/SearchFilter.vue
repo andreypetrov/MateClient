@@ -1,6 +1,6 @@
 <template>
   <div class="search-container">
-    <mt-input pholder="Търси" v-model="search"></mt-input>
+    <mt-input pholder="Търси" v-model="search" @input="input"></mt-input>
     <i class="fa fa-search" aria-hidden="true"></i>
   </div>
 </template>
@@ -16,8 +16,8 @@
       };
     },
     methods: {
-      input(event) {
-        this.$emit('input', event.target.value);
+      input(value) {
+        this.$emit('input', value);
       },
     },
     components: {
