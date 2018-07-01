@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 export default class {
   constructor() {
     this.text = 'Кой е най-високият връх в България?';
@@ -17,6 +18,18 @@ export default class {
       text: '',
     },
     ];
+  }
+
+  deepCopy() {
+    const copy = {};
+    copy.text = this.text;
+    copy.imageUrl = this.imageUrl;
+    copy.correctAnswer = this.correctAnswer;
+    copy.answers = this.answers.map(answer => ({
+      _id: answer._id,
+      text: answer.text,
+    }));
+    return copy;
   }
 }
 

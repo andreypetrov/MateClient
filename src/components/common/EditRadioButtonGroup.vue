@@ -11,7 +11,6 @@
 
             <b-form-input v-model="item.text"
                           type="text"
-                          @input="input"
                           size="sm"
                           class="radio-input"
                           :placeholder="placeholder"></b-form-input>
@@ -41,9 +40,6 @@
       value: Array,
     },
     methods: {
-      input() {
-        this.$emit('input', this.items);
-      },
       select(event) { //propagate up the answer selection
         this.selected = event;
         this.$emit('select', event);

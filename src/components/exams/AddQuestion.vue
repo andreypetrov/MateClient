@@ -41,10 +41,9 @@
     },
     methods: {
       submit() {
-        this.$emit('add', this.question);
+        this.$emit('add', this.question.deepCopy());
       },
       selectAnswer(correctAnswer) {
-        console.log('selected answer', correctAnswer);
         this.question.correctAnswer = correctAnswer;
       },
     },

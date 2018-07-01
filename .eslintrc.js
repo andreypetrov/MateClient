@@ -59,7 +59,7 @@ module.exports = {
       'baseIndent': 1,
       'switchCase': 1,
     }],
-    'no-underscore-dangle': [2, { 'allow': ['___MSFVALUE'] }],
+    'no-underscore-dangle': 0,
     'function-paren-newline': ['error', 'consistent']
   }
 }

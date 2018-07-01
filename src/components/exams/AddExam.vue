@@ -10,7 +10,7 @@
       <div
         class="col"
         v-bind:key="index" v-for="(question, index) in exam.questions">
-        {{question.text}} {{question.correctAnswer}}
+        {{question.text}} {{question.correctAnswer}} {{question.answers[0].text}}
       </div>
     </div>
 
@@ -44,9 +44,8 @@
         // alert(JSON.stringify(this.exam));
       },
       add(question) {
-        //TODO figure out why resetting of the newQuestion does not work here
         this.newQuestion = new DefaultQuestion();
-        this.exam.questions.push(Object.assign({}, question));
+        this.exam.questions.push(question);
       },
     },
   };
