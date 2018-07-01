@@ -1,6 +1,6 @@
 <template>
   <div class="search-container">
-    <mt-input pholder="Търси" v-model="search" @input="input"></mt-input>
+    <mt-input :pholder="pholder" v-model="search" @input="input"></mt-input>
     <i class="fa fa-search" aria-hidden="true"></i>
   </div>
 </template>
@@ -10,6 +10,9 @@
 
   export default {
     name: 'mt-search-filter',
+    props: {
+      pholder: String,
+    },
     data() {
       return {
         search: '',

@@ -2,7 +2,7 @@
   <div>
     <mt-container header="Списък с ученици">
       <ul class="list-group">
-        <mt-search-filter v-model="searchName"></mt-search-filter>
+        <mt-search-filter v-model="searchName" pholder="Търси по име"></mt-search-filter>
         <p v-show="!filteredStudents.length" class="text-center p-3">Добави ученици в списъка</p>
         <mt-students-list-item v-if="filteredStudents.length"
                                v-for="(student) in filteredStudents"
