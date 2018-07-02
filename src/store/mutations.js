@@ -25,4 +25,7 @@ export default {
   [mutations.SET_CURRENT_EXAM](state, exam) {
     state.currentExam = exam;
   },
+  [mutations.ADD_EXAM](state, exam) {
+    state.exams.push(exam);
+  },
 };

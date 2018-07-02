@@ -120,4 +120,18 @@ export default {
       },
     );
   },
+  [actions.ADD_EXAM]({commit}, exam) {
+    commit(mutations.SET_LOADER, true);
+    dataService.addExam(
+      exam,
+      (responseExam) => {
+        commit(mutations.ADD_EXAM, responseExam);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
 };

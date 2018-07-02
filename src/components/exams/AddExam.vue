@@ -1,7 +1,7 @@
 <template>
   <b-form @submit.prevent="submit">
-      <mt-add-exam-details v-model="exam">
-        <b-button type="submit" variant="success" class="mb-3">Запази</b-button>
+      <mt-add-exam-details value="exam" v-model="exam">
+        <b-button type="submit" variant="success" class="mb-3 w-100">Запази</b-button>
       </mt-add-exam-details>
 
     <div class="row">
@@ -22,6 +22,7 @@
   import MtAddQuestion from './AddQuestion';
   import MtAddExamDetails from './AddExamDetails';
   import DefaultQuestion from './DefaultQuestion';
+  import actions from '../../store/action-types';
 
   export default {
     name: 'mt-add-exam',
@@ -29,6 +30,7 @@
       return {
         exam: {
           subjectName: 'Правила за движение по пътищата',
+          subjectCode: '01',
           variant: 'A',
           questions: [],
         },
@@ -41,7 +43,7 @@
     },
     methods: {
       submit() {
-        // alert(JSON.stringify(this.exam));
+        this.$store.dispatch(actions.ADD_EXAM, this.exam);
       },
       add(question) {
         this.newQuestion = new DefaultQuestion();

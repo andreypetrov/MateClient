@@ -2,6 +2,7 @@
   <b-form-group :label="label">
     <b-form-radio-group id="radio-group"
                         @input="select"
+                        v-model="selected"
                         class="answer-form">
       <div class="row">
         <div :key="item._id" v-for="item in items" class="holder mb-2"
@@ -31,7 +32,7 @@
     data() {
       return {
         items: this.value,
-        selected: '',
+        selected: 'а',
       };
     },
     props: {

@@ -22,4 +22,7 @@ export default {
   getExams(params, success, failure) {
     networkClient.get('exams', success, failure, params);
   },
+  addExam(data, success, failure) {
+    networkClient.post('exams', data, success, failure);
+  },
 };

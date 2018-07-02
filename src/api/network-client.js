@@ -21,6 +21,15 @@ export default {
       failure,
     });
   },
+  put(url, data, success, failure) {
+    this.request({
+      method: 'put',
+      url,
+      data,
+      success,
+      failure,
+    });
+  },
   delete(url, success, failure) {
     this.request({
       method: 'delete',
