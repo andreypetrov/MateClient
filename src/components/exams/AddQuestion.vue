@@ -58,7 +58,6 @@
     },
     methods: {
       submit() {
-          console.log(this.question.deepCopy())
         this.$emit('add', this.question.deepCopy());
       },
       selectAnswer(correctAnswer) {
