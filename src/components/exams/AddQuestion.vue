@@ -1,35 +1,31 @@
 <template>
   <b-form @submit.prevent="submit" class="px-3 py-2 bg-light question">
     <div class="row">
-      <div class="col-md">
-        <mt-labeled-input label="Добави въпрос"
-                          v-model="question.text"
-                          placeholder="Въведи въпрос"
-        >
-        </mt-labeled-input>
-      </div>
-      <div class="col-md-4">
-        <mt-labeled-input label="Категория на въпроса"
+      <div class="col-md-2">
+        <mt-labeled-input label="Категория"
+                          size="sm"
                           v-model="question.category"
                           placeholder="Въведи категория"
         ></mt-labeled-input>
+
+        <img v-if="question.imageUrl"
+             class="image-url img-thumbnail"
+             :src="question.imageUrl">
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md">
+      <div class="col-md-4">
+        <mt-labeled-text-area label="Добави въпрос"
+                          size="sm"
+                          v-model="question.text"
+                          placeholder="Въведи въпрос"
+        >
+        </mt-labeled-text-area>
         <mt-labeled-input label="Картинка към въпроса"
+                          size="sm"
                           v-model="question.imageUrl"
                           placeholder="Въведи URL"
         ></mt-labeled-input>
       </div>
-       <div class="col-md-4">
-         <img v-if="question.imageUrl"
-              class="image-url img-thumbnail"
-              :src="question.imageUrl">
-       </div>
-    </div>
-    <div class="row">
-      <div class="col">
+      <div class="col-md">
         <mt-edit-radio-button-group label="Отговори"
                                     v-model="question.answers"
                                     @select="selectAnswer"
@@ -37,17 +33,22 @@
         </mt-edit-radio-button-group>
       </div>
     </div>
-    <b-button type="submit" text-variant="gray-lighter">Добави</b-button>
+    <div class="row">
+      <div class="col">
+        <b-button type="submit" text-variant="gray-lighter">Добави</b-button>
+      </div>
+    </div>
   </b-form>
 </template>
 
 <script>
   import MtLabeledInput from '../common/LabeledInput';
+  import MtLabeledTextArea from '../common/LabeledTextArea';
   import MtEditRadioButtonGroup from '../common/EditRadioButtonGroup';
 
   export default {
     name: 'mt-add-question',
-    components: {MtEditRadioButtonGroup, MtLabeledInput},
+    components: {MtEditRadioButtonGroup, MtLabeledInput, MtLabeledTextArea},
     data() {
       return {
         question: this.defaultQuestion,

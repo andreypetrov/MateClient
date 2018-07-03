@@ -14,6 +14,7 @@ import {
   FormCheckbox,
   FormRadio,
   FormInput,
+  FormTextarea,
   Table} from 'bootstrap-vue/es/components';
 import App from './App';
 import './assets/styles.scss';
@@ -33,6 +34,7 @@ Vue.use(FormCheckbox);
 Vue.use(FormRadio);
 Vue.use(Form);
 Vue.use(FormInput);
+Vue.use(FormTextarea);
 
 Vue.config.productionTip = false;
 
