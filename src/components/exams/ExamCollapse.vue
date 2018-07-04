@@ -4,7 +4,7 @@
       <b-card-header header-tag="header" class="p-0 rounded-0" role="tab">
         <b-btn class="rounded-0 text-left"
                block href="#"
-               v-b-toggle="'accordion-' + id"
+               v-b-toggle="id"
                variant="light">
           <span>{{data.subjectName}}</span>
           <span
@@ -16,7 +16,7 @@
           </span>
         </b-btn>
       </b-card-header>
-      <b-collapse :id="'accordion-' + id" accordion="my-accordion" role="tabpanel">
+      <b-collapse :id="id" accordion="my-accordion" role="tabpanel">
         <b-card-body>
           <mt-exam-table :items="data.questions"></mt-exam-table>
         </b-card-body>
@@ -26,15 +26,20 @@
 </template>
 
 <script>
+  import uuid4 from 'uuid/v4';
   import MtExamTable from './ExamTable';
 
   export default {
     name: 'mt-exam-collapse',
+    data() {
+      return {
+        id: uuid4(),
+      };
+    },
     components: {
       MtExamTable,
     },
     props: {
-      id: String,
       data: Object,
     },
   };
