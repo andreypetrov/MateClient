@@ -1,6 +1,6 @@
 <template>
   <div class="base-container">
-    <h3 class="bg-secondary p-3">{{header}}</h3>
+    <h3 class="bg-light p-3">{{header}}</h3>
     <div class="bg-light p-3">
       <slot>
 

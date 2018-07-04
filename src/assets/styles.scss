@@ -34,3 +34,16 @@ body {
   border-top: 1px solid #e5e5e5;
   background-color: #f3f3f3;
 }
+.category-column {
+  width: 150px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.table-striped thead {
+  background-color: #f8f9fa;
+}

@@ -113,4 +113,7 @@
     color: #fff;
     cursor: pointer;
   }
+  .remove-student:hover {
+    background-color: #e5001e;
+  }
 </style>
