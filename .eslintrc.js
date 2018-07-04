@@ -60,6 +60,7 @@ module.exports = {
       'switchCase': 1,
     }],
     'no-underscore-dangle': 0,
-    'function-paren-newline': ['error', 'consistent']
+    'function-paren-newline': ['error', 'consistent'],
+    'max-len': ['error', { 'code': 160 }]
   }
 }

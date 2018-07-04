@@ -1,24 +1,16 @@
 <template>
-    <div class="container-fluid pt-3">
-      <div class="row">
-        <div class="col">
-          <mt-container header="Списък с резултати">
-            <mt-result-collapse
-              v-if="results.length"
-              v-for="(result) in results"
-              :key="result._id"
-              :id="result._id"
-              :exam="result.exam"
-              :dateStarted="result.dateStarted"
-              :dateFinished="result.dateFinished"
-              :questions="result.questions"
-              :student="result.student"
-              :score="result.score"
-            ></mt-result-collapse>
-          </mt-container>
-        </div>
+  <div class="container-fluid pt-3">
+    <div class="row">
+      <div class="col">
+        <mt-container header="Списък с резултати">
+          <mt-collapsible :key="result._id" v-for="result in results">
+            <mt-result-header slot="header" :name="result.student.name" :score="result.score"></mt-result-header>
+            <mt-result-body :result="result"></mt-result-body>
+          </mt-collapsible>
+        </mt-container>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -26,14 +18,18 @@
   import MtContainer from '../common/Container';
   import MtSearchFilter from '../common/SearchFilter';
   import actions from '../../store/action-types';
-  import MtResultCollapse from './ResultCollapse';
+  import MtCollapsible from '../common/Collapsible';
+  import MtResultHeader from './ResultHeader';
+  import MtResultBody from './ResultBody';
 
   export default {
     name: 'mt-results',
     components: {
+      MtResultBody,
+      MtResultHeader,
+      MtCollapsible,
       MtContainer,
       MtSearchFilter,
-      MtResultCollapse,
     },
 
     created() {

@@ -1,24 +1,26 @@
 <template>
   <div>
-    <mt-exam-collapse
-      v-if="exams.length"
-      v-for="(exam) in exams"
-      :key="exam._id"
-      :id="exam._id"
-      :data="exam"
-    ></mt-exam-collapse>
+    <mt-collapsible :key="exam._id" v-for="exam in exams">
+      <mt-exam-header slot="header" :subjectName="exam.subjectName" :variant="exam.variant">
+      </mt-exam-header>
+      <mt-exam-body :questions="exam.questions"></mt-exam-body>
+    </mt-collapsible>
   </div>
 </template>
 
 <script>
 
-  import MtExamCollapse from './ExamCollapse';
   import actions from '../../store/action-types';
+  import MtCollapsible from '../common/Collapsible';
+  import MtExamHeader from './ExamHeader';
+  import MtExamBody from './ExamBody';
 
   export default {
     name: 'mt-exams-list',
     components: {
-      MtExamCollapse,
+      MtCollapsible,
+      MtExamHeader,
+      MtExamBody,
     },
     created() {
       this.getExams();
@@ -39,18 +41,18 @@
 
 <style lang="scss">
   .nav-tabs {
-    border-bottom:0;
+    border-bottom: 0;
     .nav-link {
       border-radius: 0;
       margin-right: 1px;
       background-color: #dedede;
       padding-left: 35px;
       border: 0;
-      &:hover{
+      &:hover {
         background-color: #ededed;
       }
-      &.active{
-       background-color: #ededed;
+      &.active {
+        background-color: #ededed;
       }
     }
     .add-exam-icon {
@@ -67,11 +69,12 @@
       color: #444444;
     }
     .nav-item {
-      margin-bottom:0;
+      margin-bottom: 0;
       font-size: 0.9rem;
       position: relative;
     }
   }
+
   .tab-content {
     background-color: #ededed;
     .tab-pane {
