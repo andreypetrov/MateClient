@@ -134,4 +134,19 @@ export default {
       },
     );
   },
+  [actions.UPDATE_EXAM]({commit}, examData) {
+    commit(mutations.SET_LOADER, true);
+    dataService.updateExam(
+      examData.id,
+      examData.exam,
+      (responseExam) => {
+        commit(mutations.UPDATE_EXAM, examData.index, responseExam);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
 };

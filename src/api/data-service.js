@@ -25,4 +25,7 @@ export default {
   addExam(data, success, failure) {
     networkClient.post('exams', data, success, failure);
   },
+  updateExam(id, data, success, failure) {
+    networkClient.put(`exams/${id}`, data, success, failure);
+  },
 };

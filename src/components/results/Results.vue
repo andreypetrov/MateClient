@@ -4,7 +4,9 @@
       <div class="col">
         <mt-container header="Списък с резултати">
           <mt-collapsible :key="result._id" v-for="result in results">
-            <mt-result-header slot="header" :name="result.student.name" :score="result.score"></mt-result-header>
+            <mt-result-header slot="header"
+                              :name="result.student.name"
+                              :score="result.score"></mt-result-header>
             <mt-result-body :result="result"></mt-result-body>
           </mt-collapsible>
         </mt-container>

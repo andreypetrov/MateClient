@@ -10,7 +10,7 @@
         <i aria-hidden="true" class="fa fa-plus-circle add-question"></i>
         Добави Въпрос
       </b-button>
-      <b-button type="button" variant="success" size="sm">Запази</b-button>
+      <b-button type="button" variant="success" @click="updateExam" size="sm">Запази</b-button>
     </div>
     <mt-add-question v-show="isToggled"
                      :defaultQuestion="newQuestion"
@@ -18,7 +18,7 @@
                      class="mb-3"></mt-add-question>
 
     <b-table :fields="fields"
-             :items="items"
+             :items="examClone.questions"
              outlined
              fixed
              class="table-striped"
@@ -26,11 +26,15 @@
       <template slot="category" slot-scope="data">
         <mt-input placeHolder="Категория"
                   :text="data.item.category"
+                  v-model="data.item.category"
                   class="px-1 py-0"></mt-input>
       </template>
       <template slot="text" slot-scope="data">
-        <mt-input :text="data.item.text" class="px-1 py-0"></mt-input>
+        <mt-input v-model="data.item.text"
+                  :text="data.item.text"
+                  class="px-1 py-0"></mt-input>
         <mt-input placeHolder="URL на картинка"
+                  v-model="data.item.imageUrl"
                   :text="data.item.imageUrl"
                   class="px-1 py-0"></mt-input>
         <img v-if="data.item.imageUrl"
@@ -41,7 +45,8 @@
         <div v-for="(answer) in data.item.answers"
              :key="answer._id">
           {{answer._id}})
-          <mt-input :text="answer.text"
+          <mt-input v-model="answer.text"
+                    :text="answer.text"
                     class="ml-2 px-1 py-0 d-inline-block answer-input"
           ></mt-input>
         </div>
@@ -54,6 +59,7 @@
   import MtInput from '../common/Input';
   import MtAddQuestion from './AddQuestion';
   import DefaultQuestion from './DefaultQuestion';
+  import actions from '../../store/action-types';
 
   export default {
     name: 'mt-exam-table',
@@ -65,10 +71,21 @@
       toggleAddQuestion() {
         this.isToggled = !this.isToggled;
       },
+      updateExam() {
+        this.$store.dispatch(actions.UPDATE_EXAM, {
+          id: this.examClone._id,
+          index: this.index,
+          exam: this.examClone,
+        });
+      },
+    },
+    created() {
+      this.examClone = Object.assign({}, this.exam);
     },
     props: {
       id: String,
-      items: Array,
+      index: Number,
+      exam: Object,
     },
     components: {
       MtInput,
@@ -76,9 +93,10 @@
     },
     data() {
       return {
+        examClone: {},
         isToggled: false,
         fields: [
-          {key: 'category', label: 'Категория', tdClass: 'category-column', thClass:'category-column'},
+          {key: 'category', label: 'Категория', tdClass: 'category-column', thClass: 'category-column'},
           {key: 'text', label: 'Въпрос'},
           {key: 'answers', label: 'Отговори'},
         ],

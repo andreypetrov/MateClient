@@ -1,6 +1,6 @@
 <template>
   <b-card-body>
-    <mt-exam-table :items="questions"></mt-exam-table>
+    <mt-exam-table :exam="exam"></mt-exam-table>
   </b-card-body>
 </template>
 
@@ -10,7 +10,7 @@
   export default {
     name: 'mt-exam-body',
     props: {
-      questions: Array,
+      exam: Object,
     },
     components: {
       MtExamTable,

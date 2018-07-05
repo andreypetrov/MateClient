@@ -1,9 +1,9 @@
 <template>
   <div>
-    <mt-collapsible :key="exam._id" v-for="exam in exams">
+    <mt-collapsible :key="exam._id" v-for="(exam, index) in exams">
       <mt-exam-header slot="header" :subjectName="exam.subjectName" :variant="exam.variant">
       </mt-exam-header>
-      <mt-exam-body :questions="exam.questions"></mt-exam-body>
+      <mt-exam-body :exam="exam" :index="index"></mt-exam-body>
     </mt-collapsible>
   </div>
 </template>

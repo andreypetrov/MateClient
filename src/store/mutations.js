@@ -28,4 +28,7 @@ export default {
   [mutations.ADD_EXAM](state, exam) {
     state.exams.push(exam);
   },
+  [mutations.UPDATE_EXAM](state, index, exam) {
+    state.exams[index] = exam;
+  },
 };
