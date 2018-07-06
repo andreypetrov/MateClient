@@ -20,7 +20,10 @@
     <mt-add-question v-show="isToggled"
                      :defaultQuestion="newQuestion"
                      @add="add"
-                     class="mb-3"></mt-add-question>
+                     class="mb-3"
+
+    ></mt-add-question>
+
 
     <b-table :fields="fields"
              :items="examClone.questions"
@@ -88,7 +91,7 @@
         this.$store.commit(mutations.SET_CURRENT_EXAM, exam);
       },
       selectAnswer(id, question) {
-        console.log('TODO handle selection of answer to question', id, question);
+        console.log('TODO handle selection of answer to localQuestion', id, question);
       },
     },
     created() {

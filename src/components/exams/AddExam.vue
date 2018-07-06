@@ -5,7 +5,7 @@
       </mt-add-exam-details>
 
     <div class="row">
-      <!-- TODO create a separate component to show every question.
+      <!-- TODO create a separate component to show every localQuestion.
       this is here only for demoing purposes -->
       <div
         class="col"
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <mt-add-question :defaultQuestion="newQuestion" @add="add"></mt-add-question>
+    <mt-add-question :question="newQuestion" @add="add" :has-add-button="true"></mt-add-question>
   </b-form>
 </template>
 
@@ -47,7 +47,7 @@
       },
       add(question) {
         this.newQuestion = new DefaultQuestion();
-        this.exam.questions.push(question);
+        this.exam.questions.push(question.deepCopy());
       },
     },
   };
