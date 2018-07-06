@@ -21,7 +21,7 @@
                      :value="newQuestion"
                      @add="addQuestion"
                      class="mb-3"
-
+                     :has-add-button="true"
     ></mt-add-question>
 
     <mt-add-question :key="question._id" v-for="(question, index) in examClone.questions" :value="question" @input="changeQuestion($event, index)">
