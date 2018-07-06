@@ -9,7 +9,7 @@
             </template>
             <mt-exams-list></mt-exams-list>
           </b-tab>
-          <b-tab title="second" >
+          <b-tab title="second">
             <template slot="title">
               <i class="fa fa-plus-circle add-exam-icon" aria-hidden="true"></i>Създай Изпит
             </template>
@@ -38,17 +38,17 @@
 
 <style lang="scss">
   .nav-tabs {
-    border-bottom:0;
+    border-bottom: 0;
     .nav-link {
       margin-right: 1px;
       background-color: #dedede;
       padding-left: 35px;
       border: 0;
-      &:hover{
+      &:hover {
         background-color: #ededed;
       }
-      &.active{
-       background-color: #ededed;
+      &.active {
+        background-color: #ededed;
       }
     }
     .add-exam-icon {
@@ -65,11 +65,12 @@
       color: #444444;
     }
     .nav-item {
-      margin-bottom:0;
+      margin-bottom: 0;
       font-size: 0.9rem;
       position: relative;
     }
   }
+
   .tab-content {
     background-color: #ededed;
     .tab-pane {

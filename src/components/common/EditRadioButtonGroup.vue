@@ -1,7 +1,6 @@
 <template>
     <b-form-group :label="label">
-      <b-form-radio-group id="radio-group"
-                          @input="select"
+      <b-form-radio-group @input="select"
                           v-model="selected"
                           class="answer-form">
         <div :key="item._id" v-for="item in items" class="d-flex holder align-items-center"
@@ -31,13 +30,14 @@
     data() {
       return {
         items: this.value,
-        selected: 'а',
+        selected: this.initialSelection,
       };
     },
     props: {
       placeholder: String,
       label: String,
       value: Array,
+      initialSelection: String,
     },
     methods: {
       select(event) { //propagate up the answer selection

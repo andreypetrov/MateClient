@@ -5,12 +5,13 @@
                 size="sm"
                 variant="danger"
                 v-b-modal.modalDeleteExam
-      >Изтрий изпит</b-button>
+      >Изтрий изпит
+      </b-button>
       <b-button
-                @click="toggleAddQuestion"
-                type="button"
-                size="sm"
-                text-variant="gray-lighter">
+        @click="toggleAddQuestion"
+        type="button"
+        size="sm"
+        text-variant="gray-lighter">
         <i aria-hidden="true" class="fa fa-plus-circle add-question"></i>
         Добави Въпрос
       </b-button>
@@ -45,16 +46,12 @@
              class="image-url"
              :src="data.item.imageUrl">
       </template>
-      <template slot="answers" slot-scope="data">
-        <div v-for="(answer) in data.item.answers"
-             :key="answer._id">
-          {{answer._id}})
-          <mt-input v-model="answer.text"
-                    :text="answer.text"
-                    class="ml-2 px-1 py-0 d-inline-block answer-input"
-          ></mt-input>
-        </div>
-      </template>
+      <mt-edit-radio-button-group slot="answers" slot-scope="data"
+                                  v-model="data.item.answers"
+                                  @select="selectAnswer($event, data.item)"
+                                  placeholder="Въведи отговор"
+                                  :initialSelection="data.item.correctAnswer">
+      </mt-edit-radio-button-group>
     </b-table>
   </div>
 </template>
@@ -65,6 +62,7 @@
   import DefaultQuestion from './DefaultQuestion';
   import actions from '../../store/action-types';
   import mutations from '../../store/mutation-types';
+  import MtEditRadioButtonGroup from '../common/EditRadioButtonGroup';
 
   /* eslint no-underscore-dangle: 0 */
 
@@ -89,6 +87,9 @@
         const exam = this.$store.getters.getExamById(this.examClone._id);
         this.$store.commit(mutations.SET_CURRENT_EXAM, exam);
       },
+      selectAnswer(id, question) {
+        console.log('TODO handle selection of answer to question', id, question);
+      },
     },
     created() {
       this.examClone = Object.assign({}, this.exam);
@@ -102,6 +103,7 @@
     components: {
       MtInput,
       MtAddQuestion,
+      MtEditRadioButtonGroup,
     },
     data() {
       return {
@@ -120,12 +122,14 @@
 
 <style scoped>
   .answer-input {
-    width:calc(100% - 30px);
+    width: calc(100% - 30px);
   }
+
   .image-url {
-    max-width:100px;
-    max-height:100px;
+    max-width: 100px;
+    max-height: 100px;
   }
+
   .category-column {
     width: 150px;
   }
