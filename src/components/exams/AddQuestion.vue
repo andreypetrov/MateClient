@@ -7,36 +7,36 @@
       <div class="col-md-2 category-container">
         <mt-labeled-input label="Категория"
                           size="sm"
-                          v-model="localQuestion.category"
+                          v-model="value.category"
                           class="category-input"
                           placeholder="Въведи категория"
                           @input="input"
         ></mt-labeled-input>
 
-        <img v-if="localQuestion.imageUrl"
+        <img v-if="value.imageUrl"
              class="image-url img-thumbnail"
-             :src="localQuestion.imageUrl">
+             :src="value.imageUrl">
       </div>
       <div class="col-md-4">
         <mt-labeled-text-area label="Добави въпрос"
                           size="sm"
-                          v-model="localQuestion.text"
+                          v-model="value.text"
                           @input="input"
                           placeholder="Въведи въпрос"
         >
         </mt-labeled-text-area>
         <mt-labeled-input label="Картинка към въпроса"
                           size="sm"
-                          v-model="localQuestion.imageUrl"
+                          v-model="value.imageUrl"
                           @input="input"
                           placeholder="Въведи URL"
         ></mt-labeled-input>
       </div>
       <div class="col-md">
         <mt-edit-radio-button-group label="Отговори"
-                                    v-model="localQuestion.answers"
+                                    v-model="value.answers"
                                     @select="selectAnswer"
-                                    :initialSelection="localQuestion.correctAnswer"
+                                    :selected="value.correctAnswer"
                                     placeholder="Въведи отговор"
                                     @input="input">
         </mt-edit-radio-button-group>
@@ -58,11 +58,6 @@
   export default {
     name: 'mt-add-localQuestion',
     components: {MtEditRadioButtonGroup, MtLabeledInput, MtLabeledTextArea},
-    data() {
-      return {
-        localQuestion: this.value,
-      };
-    },
     props: {
       hasAddButton: Boolean,
       value: Object,
@@ -78,13 +73,14 @@
     },
     methods: {
       input() {
-        this.$emit('input', this.localQuestion);
+        this.$emit('input', this.value);
       },
       submit() {
-        this.$emit('add', this.localQuestion);
+        this.$emit('add', this.value);
       },
       selectAnswer(correctAnswer) {
-        this.localQuestion.correctAnswer = correctAnswer;
+        this.value.correctAnswer = correctAnswer;
+        this.input();
       },
     },
   };
