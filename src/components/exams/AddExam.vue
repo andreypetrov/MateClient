@@ -4,17 +4,20 @@
         <b-button type="submit" variant="success" class="mb-3 w-100">Запази</b-button>
       </mt-add-exam-details>
 
-    <div class="row">
-      <!-- TODO create a separate component to show every localQuestion.
-      this is here only for demoing purposes -->
-      <div
-        class="col"
-        v-bind:key="index" v-for="(question, index) in exam.questions">
-        {{question.text}} {{question.correctAnswer}} {{question.answers[0].text}}
-      </div>
+    <mt-add-question :value="newQuestion"
+                     @add="add"
+                     :has-add-button="true"
+                     class="mb-3"
+    ></mt-add-question>
+    <div class="question-list">
+      <mt-add-question class="question-list-item"
+                       :key="question._id"
+                       v-for="(question, index) in exam.questions"
+                       :value="question"
+                       :index="index"
+                       @input="changeQuestion($event, index)">
+      </mt-add-question>
     </div>
-
-    <mt-add-question :value="newQuestion" @add="add" :has-add-button="true"></mt-add-question>
   </b-form>
 </template>
 
@@ -46,8 +49,11 @@
         this.$store.dispatch(actions.ADD_EXAM, this.exam);
       },
       add(question) {
-        this.newQuestion = new DefaultQuestion();
         this.exam.questions.push(question.deepCopy());
+        this.newQuestion = new DefaultQuestion();
+      },
+      changeQuestion(question, index) {
+        this.exam.questions.splice(index, 1, question);
       },
     },
   };

@@ -3,14 +3,13 @@
 // Import custom font from Google
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import "~bootstrap/scss/bootstrap";
+@import "./_card";
 @import "~font-awesome/scss/font-awesome";
 
 
-body {
-  background: #555;
-}
 .modal-content {
   border-radius: 0;
+  color: #222222;
 }
 .modal-title {
   margin-bottom: 0;
@@ -46,4 +45,51 @@ body {
 }
 .table-striped thead {
   background-color: #f8f9fa;
+}
+.variant {
+  font-size:0.8rem;
+  background-color: #4a4949;
+}
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  .category-input {
+    flex: 1 1 100%;
+  }
+}
+
+.question {
+  font-size: 0.85rem;
+  border: 5px solid #68bd85;
+  background-color: #f1f1f1;
+  color: #888;
+
+  + .question {
+    margin-top: .5rem;
+  }
+
+  &.question-list-item {
+    border: none;
+    background-color: #f8f9fa;
+    +.question-list-item {
+      border-top: 1px solid #000000;
+    }
+  }
+}
+.question-counter {
+  span {
+    background: #3ba961;
+    padding: 0px 7px 1px 7px;
+    font-size: 0.7rem;
+    margin-left: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #fff;
+  }
+}
+.image-url {
+  max-width:100px;
+  max-height:100px;
+  flex: 1 1 100%;
 }

@@ -35,9 +35,3 @@
     },
   };
 </script>
-
-<style scoped>
-  .variant {
-    font-size:0.8rem;
-  }
-</style>

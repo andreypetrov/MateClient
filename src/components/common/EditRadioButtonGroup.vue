@@ -66,8 +66,8 @@
   }
 
   .active {
-    background: #fdf569;
-    border: 1px solid #ceb220;
+    background: #94ff3b;
+    border: 1px solid #67c343;
   }
 
   .radio-form-group {

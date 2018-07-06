@@ -1,10 +1,14 @@
 <template>
-  <b-form @submit.prevent="submit" class="px-3 py-2 bg-light question">
+  <b-form @submit.prevent="submit" class="px-3 py-2 question">
     <div class="row">
-      <div class="col-md-2">
+      <div v-if="getQuestionNumber" class="question-counter">
+        <span>{{getQuestionNumber}}</span>
+      </div>
+      <div class="col-md-2 category-container">
         <mt-labeled-input label="Категория"
                           size="sm"
                           v-model="localQuestion.category"
+                          class="category-input"
                           placeholder="Въведи категория"
                           @input="input"
         ></mt-labeled-input>
@@ -62,6 +66,15 @@
     props: {
       hasAddButton: Boolean,
       value: Object,
+      index: Number,
+    },
+    computed: {
+      getQuestionNumber() {
+        if (this.index === undefined) {
+          return '';
+        }
+        return this.index + 1;
+      },
     },
     methods: {
       input() {
@@ -76,15 +89,3 @@
     },
   };
 </script>
-
-<style scoped>
-  .question {
-    font-size: 0.85rem;
-    border: 5px solid #b8d4c1;
-    color: #888;
-  }
-  .image-url {
-    max-width:100px;
-    max-height:100px;
-  }
-</style>

@@ -4,7 +4,7 @@
     <span
       class="variant
             text-info
-            rounded bg-dark ml-3 pl-2 pr-2 pt-1 pb-1 font-weight-light"
+            rounded ml-3 pl-2 pr-2 pt-1 pb-1 font-weight-light"
     >Вариант: {{variant}}
           </span>
   </div>
@@ -19,9 +19,3 @@
     },
   };
 </script>
-
-<style scoped>
-  .variant {
-    font-size:0.8rem;
-  }
-</style>

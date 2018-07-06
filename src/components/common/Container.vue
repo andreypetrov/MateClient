@@ -1,7 +1,7 @@
 <template>
   <div class="base-container">
-    <h3 class="bg-light p-3">{{header}}</h3>
-    <div class="bg-light p-3">
+    <h3 class="p-3">{{header}}</h3>
+    <div class="p-3">
       <slot>
 
       </slot>
@@ -21,13 +21,15 @@
 <style scoped>
   .base-container {
     border: 1px solid rgba(0,0,0,0.1);
+    background-color: #545454;
   }
   h3 {
-    color: #777;
+    color: #dedede;
     font-weight: normal;
     text-transform: uppercase;
     line-height: 17px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: #636363;
+    border-bottom: 1px solid #403f3f;
     font-size: 11px;
     margin:0;
   }

@@ -4,7 +4,7 @@
       <b-btn class="rounded-0 text-left"
              block href="#"
              v-b-toggle="id"
-             variant="light">
+             variant="dark">
         <slot name="header"></slot>
       </b-btn>
     </b-card-header>

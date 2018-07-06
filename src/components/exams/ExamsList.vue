@@ -25,6 +25,8 @@
   import MtExamHeader from './ExamHeader';
   import MtExamBody from './ExamBody';
   import MtConfirmDelete from '../common/ConfirmDelete';
+  /* eslint no-underscore-dangle: 0 */
+
 
   export default {
     name: 'mt-exams-list',
@@ -70,18 +72,21 @@
     .nav-link {
       border-radius: 0;
       margin-right: 1px;
-      background-color: #dedede;
+      background-color: #333333;
       padding-left: 35px;
       border: 0;
+      color: #ccc;
+
       &:hover {
-        background-color: #ededed;
+        background-color: #545454;
       }
       &.active {
-        background-color: #ededed;
-      }
+        background-color: #545454;
+         color: #fff;
+       }
     }
     .add-exam-icon {
-      color: #2b994f;
+      color: #3ed271;
       font-size: 20px;
       position: absolute;
       left: 10px;
@@ -91,7 +96,6 @@
       left: 10px;
       top: 12px;
       font-size: 18px;
-      color: #444444;
     }
     .nav-item {
       margin-bottom: 0;
@@ -101,9 +105,11 @@
   }
 
   .tab-content {
-    background-color: #ededed;
+    background-color: #545454;
+    color: #cccaca;
     .tab-pane {
-      padding: 15px;
+      padding: 1.5rem;
+      padding-top: 2rem;
     }
   }
 

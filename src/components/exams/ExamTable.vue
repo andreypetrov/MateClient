@@ -3,6 +3,7 @@
     <div class="text-right mb-3">
       <b-button type="button"
                 size="sm"
+                class="mr-2"
                 variant="danger"
                 v-b-modal.modalDeleteExam
       >Изтрий изпит
@@ -11,6 +12,7 @@
         @click="toggleAddQuestion"
         type="button"
         size="sm"
+        class="mr-2"
         text-variant="gray-lighter">
         <i aria-hidden="true" class="fa fa-plus-circle add-question"></i>
         Добави Въпрос
@@ -21,11 +23,18 @@
                      :value="newQuestion"
                      @add="addQuestion"
                      class="mb-3"
-
+                     :has-add-button="true"
     ></mt-add-question>
 
-    <mt-add-question :key="question._id" v-for="(question, index) in examClone.questions" :value="question" @input="changeQuestion($event, index)">
-    </mt-add-question>
+    <div class="question-list">
+      <mt-add-question class="question-list-item"
+                       :key="question._id"
+                       v-for="(question, index) in examClone.questions"
+                       :value="question"
+                       :index="index"
+                       @input="changeQuestion($event, index)">
+      </mt-add-question>
+    </div>
   </div>
 </template>
 
@@ -97,6 +106,7 @@
 </script>
 
 <style scoped>
+
   .answer-input {
     width: calc(100% - 30px);
   }
