@@ -29,6 +29,6 @@ export default {
     state.exams.push(exam);
   },
   [mutations.UPDATE_EXAM](state, index, exam) {
-    state.exams[index] = exam;
+    state.exams.splice(index, 1, exam);
   },
 };
