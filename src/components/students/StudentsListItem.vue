@@ -1,6 +1,6 @@
 <template>
   <div class="list-group-item p-2">
-    <img class="avatar" :src="getAvatar">
+    <img class="student-avatar" :src="getAvatar">
     <span class="user-info">
       <span class="user-group m-2 p-1">{{ group }}</span>
       <span class="user-name">{{ name }}</span>
@@ -61,7 +61,7 @@
 </script>
 
 <style scoped>
-  .avatar {
+  .student-avatar {
     position: absolute;
     top: 0.5em;
     min-width: 50px;
