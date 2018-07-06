@@ -54,7 +54,6 @@
   import MtLabeledInput from '../common/LabeledInput';
   import MtLabeledTextArea from '../common/LabeledTextArea';
   import MtEditRadioButtonGroup from '../common/EditRadioButtonGroup';
-  import DefaultQuestion from './DefaultQuestion';
 
   export default {
     name: 'mt-add-localQuestion',
@@ -83,8 +82,6 @@
       },
       submit() {
         this.$emit('add', this.localQuestion);
-        this.localQuestion = new DefaultQuestion();
-
       },
       selectAnswer(correctAnswer) {
         this.localQuestion.correctAnswer = correctAnswer;
