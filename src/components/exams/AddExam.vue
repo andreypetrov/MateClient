@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import MtAddQuestion from './AddQuestion';
+  import MtAddEditQuestion from './AddEditQuestion';
   import MtAddExamDetails from './AddExamDetails';
   import DefaultQuestion from './DefaultQuestion';
   import actions from '../../store/action-types';
@@ -39,14 +39,13 @@
     },
     components: {
       MtAddExamDetails,
-      MtAddQuestion,
+      MtAddEditQuestion,
     },
     methods: {
       submit() {
         this.$store.dispatch(actions.ADD_EXAM, this.exam);
       },
       add(question) {
-        this.newQuestion = new DefaultQuestion();
         this.exam.questions.push(question);
       },
     },

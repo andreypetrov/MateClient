@@ -45,9 +45,10 @@
   import MtLabeledInput from '../common/LabeledInput';
   import MtLabeledTextArea from '../common/LabeledTextArea';
   import MtEditRadioButtonGroup from '../common/EditRadioButtonGroup';
+  import DefaultQuestion from './DefaultQuestion';
 
   export default {
-    name: 'mt-add-question',
+    name: 'mt-add-edit-question',
     components: {MtEditRadioButtonGroup, MtLabeledInput, MtLabeledTextArea},
     data() {
       return {
@@ -60,6 +61,7 @@
     methods: {
       submit() {
         this.$emit('add', this.question.deepCopy());
+        this.question = new DefaultQuestion();
       },
       selectAnswer(correctAnswer) {
         this.question.correctAnswer = correctAnswer;

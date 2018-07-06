@@ -73,6 +73,7 @@
   }
   .radio-input {
     margin-top: -3px;
+    flex: 1;
   }
   .id {
     min-width: 15px;

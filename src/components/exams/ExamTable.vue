@@ -22,43 +22,13 @@
                      @add="add"
                      class="mb-3"></mt-add-question>
 
-    <b-table :fields="fields"
-             :items="examClone.questions"
-             outlined
-             fixed
-             class="table-striped"
-    >
-      <template slot="category" slot-scope="data">
-        <mt-input placeHolder="Категория"
-                  :text="data.item.category"
-                  v-model="data.item.category"
-                  class="px-1 py-0"></mt-input>
-      </template>
-      <template slot="text" slot-scope="data">
-        <mt-input v-model="data.item.text"
-                  :text="data.item.text"
-                  class="px-1 py-0"></mt-input>
-        <mt-input placeHolder="URL на картинка"
-                  v-model="data.item.imageUrl"
-                  :text="data.item.imageUrl"
-                  class="px-1 py-0"></mt-input>
-        <img v-if="data.item.imageUrl"
-             class="image-url"
-             :src="data.item.imageUrl">
-      </template>
-      <mt-edit-radio-button-group slot="answers" slot-scope="data"
-                                  v-model="data.item.answers"
-                                  @select="selectAnswer($event, data.item)"
-                                  placeholder="Въведи отговор"
-                                  :initialSelection="data.item.correctAnswer">
-      </mt-edit-radio-button-group>
-    </b-table>
+
   </div>
 </template>
 
 <script>
   import MtInput from '../common/Input';
-  import MtAddQuestion from './AddQuestion';
+  import MtAddEditQuestion from './AddEditQuestion';
   import DefaultQuestion from './DefaultQuestion';
   import actions from '../../store/action-types';
   import mutations from '../../store/mutation-types';
@@ -102,7 +72,7 @@
     },
     components: {
       MtInput,
-      MtAddQuestion,
+      MtAddEditQuestion,
       MtEditRadioButtonGroup,
     },
     data() {
