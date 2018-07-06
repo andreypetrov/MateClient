@@ -21,9 +21,9 @@ export default {
       },
     );
   },
-  [actions.DELETE_STUDENT_BY_ID]({commit, state}, studentId) {
+  [actions.DELETE_STUDENT]({commit, state}, studentId) {
     commit(mutations.SET_LOADER, true);
-    dataService.deleteStudentById(
+    dataService.deleteStudent(
       studentId,
       () => {
         const remainingStudents = getters.getRemainingStudents(state, studentId);
@@ -141,6 +141,21 @@ export default {
       examData.exam,
       (responseExam) => {
         commit(mutations.UPDATE_EXAM, examData.index, responseExam);
+        commit(mutations.SET_LOADER, false);
+      },
+      (error) => {
+        console.log(error);
+        commit(mutations.SET_LOADER, false);
+      },
+    );
+  },
+  [actions.DELETE_EXAM]({commit, state}, examId) {
+    commit(mutations.SET_LOADER, true);
+    dataService.deleteExam(
+      examId,
+      () => {
+        const remainingExams = getters.getRemainingExams(state, examId);
+        commit(mutations.SET_EXAMS, remainingExams);
         commit(mutations.SET_LOADER, false);
       },
       (error) => {

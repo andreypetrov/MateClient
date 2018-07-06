@@ -5,6 +5,16 @@
       </mt-exam-header>
       <mt-exam-body :exam="exam" :index="index"></mt-exam-body>
     </mt-collapsible>
+    <b-modal id="modalDeleteExam"
+             ref="modal"
+             title="Изтрий изпит"
+             @ok="deleteExam"
+             ok-title="Да"
+             cancel-title="Откажи"
+    >
+      <mt-confirm-delete :question="modalTitle"
+                         :data="examDescription"></mt-confirm-delete>
+    </b-modal>
   </div>
 </template>
 
@@ -14,6 +24,8 @@
   import MtCollapsible from '../common/Collapsible';
   import MtExamHeader from './ExamHeader';
   import MtExamBody from './ExamBody';
+  import MtConfirmDelete from '../common/ConfirmDelete';
+  /* eslint no-underscore-dangle: 0 */
 
   export default {
     name: 'mt-exams-list',
@@ -21,6 +33,7 @@
       MtCollapsible,
       MtExamHeader,
       MtExamBody,
+      MtConfirmDelete,
     },
     created() {
       this.getExams();
@@ -29,10 +42,23 @@
       exams() {
         return this.$store.state.exams;
       },
+      examDescription() {
+        const description =
+          `${this.$store.state.currentExam.subjectName} <br> Вариант: ${this.$store.state.currentExam.variant}`;
+        return description;
+      },
+    },
+    data() {
+      return {
+        modalTitle: 'Сигурен ли си, че искаш да изтриеш',
+      };
     },
     methods: {
       getExams() {
         this.$store.dispatch(actions.GET_EXAMS);
+      },
+      deleteExam() {
+        this.$store.dispatch(actions.DELETE_EXAM, this.$store.state.currentExam._id);
       },
     },
   };

@@ -11,7 +11,6 @@
                                :avatar="student.avatar"
                                :group="student.group"
                                :name="student.name"
-                               @openModal="openModal"
         ></mt-students-list-item>
       </ul>
     </mt-container>
@@ -22,7 +21,8 @@
              ok-title="Да"
              cancel-title="Откажи"
     >
-      <mt-confirm-delete-student :name="studentName"></mt-confirm-delete-student>
+      <mt-confirm-delete :question="modalTitle"
+                         :data="studentName"></mt-confirm-delete>
     </b-modal>
   </div>
 </template>
@@ -32,7 +32,7 @@
   import MtContainer from '../common/Container';
   import MtSearchFilter from '../common/SearchFilter';
   import MtStudentsListItem from './StudentsListItem';
-  import MtConfirmDeleteStudent from '../students/ConfirmDeleteStudent';
+  import MtConfirmDelete from '../common/ConfirmDelete';
   import actions from '../../store/action-types';
 
   export default {
@@ -41,11 +41,11 @@
       MtContainer,
       MtSearchFilter,
       MtStudentsListItem,
-      MtConfirmDeleteStudent,
+      MtConfirmDelete,
     },
     data() {
       return {
-        showModal: false,
+        modalTitle: 'Сигурен ли си, че искаш да изтриеш',
         searchName: '',
       };
     },
@@ -66,11 +66,8 @@
       getStudents() {
         this.$store.dispatch(actions.GET_STUDENTS);
       },
-      openModal() {
-        this.showModal = true;
-      },
       deleteStudent() {
-        this.$store.dispatch(actions.DELETE_STUDENT_BY_ID, this.$store.state.currentStudent._id);
+        this.$store.dispatch(actions.DELETE_STUDENT, this.$store.state.currentStudent._id);
       },
     },
   };

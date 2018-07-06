@@ -1,19 +1,19 @@
 <template>
   <div>
     <p>
-      Сигурен ли си, че искаш да изтриеш ученик
+      {{question}}
     </p>
-    <p class="current-student mb-0">
-      {{name}}
+    <p class="current-student mb-0" v-html="data">
     </p>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'mt-confirm-delete-student',
+    name: 'mt-confirm-delete',
     props: {
-      name: String,
+      question: String,
+      data: String,
     },
   };
 </script>

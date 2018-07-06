@@ -10,7 +10,7 @@ export default {
   addStudent(data, success, failure) {
     networkClient.post('students', data, success, failure);
   },
-  deleteStudentById(id, success, failure) {
+  deleteStudent(id, success, failure) {
     networkClient.delete(`students/${id}`, success, failure);
   },
   getResults(success, failure) {
@@ -27,5 +27,8 @@ export default {
   },
   updateExam(id, data, success, failure) {
     networkClient.put(`exams/${id}`, data, success, failure);
+  },
+  deleteExam(id, success, failure) {
+    networkClient.delete(`exams/${id}`, success, failure);
   },
 };

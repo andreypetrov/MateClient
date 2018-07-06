@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="text-right mb-3">
-      <b-button type="button" size="sm" variant="danger">Изтрий изпит</b-button>
+      <b-button type="button"
+                size="sm"
+                variant="danger"
+                v-b-modal.modalDeleteExam
+      >Изтрий изпит</b-button>
       <b-button
                 @click="toggleAddQuestion"
                 type="button"
@@ -60,13 +64,16 @@
   import MtAddQuestion from './AddQuestion';
   import DefaultQuestion from './DefaultQuestion';
   import actions from '../../store/action-types';
+  import mutations from '../../store/mutation-types';
+
+  /* eslint no-underscore-dangle: 0 */
 
   export default {
     name: 'mt-exam-table',
     methods: {
       add(question) {
         this.newQuestion = new DefaultQuestion();
-        //this.exam.questions.push(question);
+        this.examClone.questions.push(question);
       },
       toggleAddQuestion() {
         this.isToggled = !this.isToggled;
@@ -78,9 +85,14 @@
           exam: this.examClone,
         });
       },
+      setCurrentExam() {
+        const exam = this.$store.getters.getExamById(this.examClone._id);
+        this.$store.commit(mutations.SET_CURRENT_EXAM, exam);
+      },
     },
     created() {
       this.examClone = Object.assign({}, this.exam);
+      this.setCurrentExam();
     },
     props: {
       id: String,
