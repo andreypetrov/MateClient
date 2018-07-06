@@ -22,19 +22,19 @@
     </div>
     <mt-labeled-input label="Предмет"
                       size="sm"
-                      v-model="examClone.subjectName"
+                      v-model="exam.subjectName"
                       class="category-input"
                       placeholder="Въведи предмет"
     ></mt-labeled-input>
     <mt-labeled-input label="Код на предмет"
                       size="sm"
-                      v-model="examClone.subjectCode"
+                      v-model="exam.subjectCode"
                       class="category-input"
                       placeholder="Въведи код на предмет"
     ></mt-labeled-input>
     <mt-labeled-input label="Вариант"
                       size="sm"
-                      v-model="examClone.variant"
+                      v-model="exam.variant"
                       class="category-input"
                       placeholder="Въведи вариант"
     ></mt-labeled-input>
@@ -48,7 +48,7 @@
     <div class="question-list">
       <mt-add-question class="question-list-item"
                        :key="question._id"
-                       v-for="(question, index) in examClone.questions"
+                       v-for="(question, index) in exam.questions"
                        :value="question"
                        :index="index"
                        @input="changeQuestion($event, index)">
@@ -63,7 +63,6 @@
   import MtLabeledInput from '../common/LabeledInput';
   import DefaultQuestion from './DefaultQuestion';
   import actions from '../../store/action-types';
-  import mutations from '../../store/mutation-types';
   import MtEditRadioButtonGroup from '../common/EditRadioButtonGroup';
 
   /* eslint no-underscore-dangle: 0 */
@@ -72,34 +71,26 @@
     name: 'mt-exam-table',
     methods: {
       changeQuestion(question, index) {
-        this.examClone.questions.splice(index, 1, question);
+        this.exam.questions.splice(index, 1, question);
       },
       addQuestion(question) {
         this.newQuestion = new DefaultQuestion();
-        this.examClone.questions.push(question);
+        this.exam.questions.push(question);
       },
       toggleAddQuestion() {
         this.isToggled = !this.isToggled;
       },
       updateExam() {
-        console.log(this.examClone.category);
+        console.log('_id:', this.exam._id);
         this.$store.dispatch(actions.UPDATE_EXAM, {
-          id: this.examClone._id,
+          id: this.exam._id,
           index: this.index,
-          exam: this.examClone,
+          exam: this.exam,
         });
-      },
-      setCurrentExam() {
-        const exam = this.$store.getters.getExamById(this.examClone._id);
-        this.$store.commit(mutations.SET_CURRENT_EXAM, exam);
       },
       selectAnswer(id, question) {
         console.log('TODO handle selection of answer to localQuestion', id, question);
       },
-    },
-    created() {
-      this.examClone = Object.assign({}, this.exam);
-      this.setCurrentExam();
     },
     props: {
       id: String,
@@ -114,7 +105,6 @@
     },
     data() {
       return {
-        examClone: {},
         isToggled: false,
         fields: [
           {key: 'category', label: 'Категория', tdClass: 'category-column', thClass: 'category-column'},

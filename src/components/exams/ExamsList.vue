@@ -27,7 +27,6 @@
   import MtConfirmDelete from '../common/ConfirmDelete';
   /* eslint no-underscore-dangle: 0 */
 
-
   export default {
     name: 'mt-exams-list',
     components: {
