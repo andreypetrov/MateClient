@@ -18,46 +18,14 @@
       <b-button type="button" variant="success" @click="updateExam" size="sm">Запази</b-button>
     </div>
     <mt-add-question v-show="isToggled"
-                     :question="newQuestion"
-                     @add="add"
+                     :value="newQuestion"
+                     @add="addQuestion"
                      class="mb-3"
 
     ></mt-add-question>
 
-    <mt-add-question :key="question._id" v-for="question in examClone.questions" :question="question">
+    <mt-add-question :key="question._id" v-for="(question, index) in examClone.questions" :value="question" @input="changeQuestion($event, index)">
     </mt-add-question>
-
-    <b-table :fields="fields"
-             :items="examClone.questions"
-             outlined
-             fixed
-             class="table-striped"
-    >
-      <template slot="category" slot-scope="data">
-        <mt-input placeHolder="Категория"
-                  :text="data.item.category"
-                  v-model="data.item.category"
-                  class="px-1 py-0"></mt-input>
-      </template>
-      <template slot="text" slot-scope="data">
-        <mt-input v-model="data.item.text"
-                  :text="data.item.text"
-                  class="px-1 py-0"></mt-input>
-        <mt-input placeHolder="URL на картинка"
-                  v-model="data.item.imageUrl"
-                  :text="data.item.imageUrl"
-                  class="px-1 py-0"></mt-input>
-        <img v-if="data.item.imageUrl"
-             class="image-url"
-             :src="data.item.imageUrl">
-      </template>
-      <mt-edit-radio-button-group slot="answers" slot-scope="data"
-                                  v-model="data.item.answers"
-                                  @select="selectAnswer($event, data.item)"
-                                  placeholder="Въведи отговор"
-                                  :initialSelection="data.item.correctAnswer">
-      </mt-edit-radio-button-group>
-    </b-table>
   </div>
 </template>
 
@@ -74,7 +42,10 @@
   export default {
     name: 'mt-exam-table',
     methods: {
-      add(question) {
+      changeQuestion(question, index) {
+        this.examClone.questions.splice(index, 1, question);
+      },
+      addQuestion(question) {
         this.newQuestion = new DefaultQuestion();
         this.examClone.questions.push(question);
       },

@@ -32,6 +32,7 @@
         <mt-edit-radio-button-group label="Отговори"
                                     v-model="localQuestion.answers"
                                     @select="selectAnswer"
+                                    :initialSelection="localQuestion.correctAnswer"
                                     placeholder="Въведи отговор"
                                     @input="input">
         </mt-edit-radio-button-group>
@@ -55,12 +56,12 @@
     components: {MtEditRadioButtonGroup, MtLabeledInput, MtLabeledTextArea},
     data() {
       return {
-        localQuestion: this.question,
+        localQuestion: this.value,
       };
     },
     props: {
       hasAddButton: Boolean,
-      question: Object,
+      value: Object,
     },
     methods: {
       input() {

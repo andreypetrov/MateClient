@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <mt-add-question :question="newQuestion" @add="add" :has-add-button="true"></mt-add-question>
+    <mt-add-question :value="newQuestion" @add="add" :has-add-button="true"></mt-add-question>
   </b-form>
 </template>
 
