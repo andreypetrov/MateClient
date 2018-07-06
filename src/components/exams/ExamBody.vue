@@ -1,23 +1,5 @@
 <template>
   <b-card-body>
-    <mt-labeled-input label="Предмет"
-                      size="sm"
-                      v-model="examClone.subjectName"
-                      class="category-input"
-                      placeholder="Въведи предмет"
-    ></mt-labeled-input>
-    <mt-labeled-input label="Код на предмет"
-                      size="sm"
-                      v-model="examClone.subjectCode"
-                      class="category-input"
-                      placeholder="Въведи код на предмет"
-    ></mt-labeled-input>
-    <mt-labeled-input label="Вариант"
-                      size="sm"
-                      v-model="examClone.variant"
-                      class="category-input"
-                      placeholder="Въведи вариант"
-    ></mt-labeled-input>
 
     <div class="text-right mb-3">
       <b-button type="button"
@@ -38,6 +20,24 @@
       </b-button>
       <b-button type="button" variant="success" @click="updateExam" size="sm">Запази</b-button>
     </div>
+    <mt-labeled-input label="Предмет"
+                      size="sm"
+                      v-model="examClone.subjectName"
+                      class="category-input"
+                      placeholder="Въведи предмет"
+    ></mt-labeled-input>
+    <mt-labeled-input label="Код на предмет"
+                      size="sm"
+                      v-model="examClone.subjectCode"
+                      class="category-input"
+                      placeholder="Въведи код на предмет"
+    ></mt-labeled-input>
+    <mt-labeled-input label="Вариант"
+                      size="sm"
+                      v-model="examClone.variant"
+                      class="category-input"
+                      placeholder="Въведи вариант"
+    ></mt-labeled-input>
     <mt-add-question v-show="isToggled"
                      :value="newQuestion"
                      @add="addQuestion"
