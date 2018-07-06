@@ -6,6 +6,10 @@ export default {
     state.students.filter(student => student._id !== id),
   getExamById: state => id =>
     state.exams.find(exam => exam._id === id),
-  getRemainingExams: (state, id) =>
-    state.exams.filter(exam => exam._id !== id),
+  getExamIndexById: state => (id) => {
+    for (let i = 0; i < state.exams.length; i += 1) {
+      if (state.exams[i]._id === id) return i;
+    }
+    return -1;
+  },
 };

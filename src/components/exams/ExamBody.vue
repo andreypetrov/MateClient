@@ -18,7 +18,7 @@
         <i aria-hidden="true" class="fa fa-plus-circle add-question"></i>
         Добави Въпрос
       </b-button>
-      <b-button type="button" variant="success" @click="updateExam" size="sm">Запази</b-button>
+      <b-button type="button" variant="success" size="sm" @click="updateExam">Запази</b-button>
     </div>
     <mt-labeled-input label="Предмет"
                       size="sm"
@@ -62,7 +62,6 @@
   import MtAddQuestion from './AddQuestion';
   import MtLabeledInput from '../common/LabeledInput';
   import DefaultQuestion from './DefaultQuestion';
-  import actions from '../../store/action-types';
   import MtEditRadioButtonGroup from '../common/EditRadioButtonGroup';
 
   /* eslint no-underscore-dangle: 0 */
@@ -81,12 +80,7 @@
         this.isToggled = !this.isToggled;
       },
       updateExam() {
-        console.log('_id:', this.exam._id);
-        this.$store.dispatch(actions.UPDATE_EXAM, {
-          id: this.exam._id,
-          index: this.index,
-          exam: this.exam,
-        });
+        this.$emit('update', this.exam);
       },
       selectAnswer(id, question) {
         console.log('TODO handle selection of answer to localQuestion', id, question);

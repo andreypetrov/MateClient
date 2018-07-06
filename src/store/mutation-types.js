@@ -9,4 +9,5 @@ export default {
   SET_EXAMS: 'SET_EXAMS',
   ADD_EXAM: 'ADD_EXAM',
   UPDATE_EXAM: 'UPDATE_EXAM',
+  DELETE_EXAM: 'DELETE_EXAM',
 };

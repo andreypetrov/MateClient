@@ -1,4 +1,5 @@
 import mutations from './mutation-types';
+import getters from './getters';
 
 export default {
   [mutations.SET_LOADER](state, isLoading) {
@@ -28,7 +29,10 @@ export default {
   [mutations.ADD_EXAM](state, exam) {
     state.exams.push(exam);
   },
-  [mutations.UPDATE_EXAM](state, index, exam) {
+  [mutations.UPDATE_EXAM](state, {index, exam}) {
     state.exams.splice(index, 1, exam);
+  },
+  [mutations.DELETE_EXAM](state, examId) {
+    state.exams.splice(getters.getExamIndexById(examId), 1);
   },
 };

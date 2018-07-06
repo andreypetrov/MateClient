@@ -3,18 +3,18 @@
     <mt-collapsible :key="exam._id" v-for="(exam, index) in exams">
       <mt-exam-header slot="header" :subjectName="exam.subjectName" :variant="exam.variant">
       </mt-exam-header>
-      <mt-exam-body :exam="exam" :index="index"></mt-exam-body>
+      <mt-exam-body :exam="exam" :index="index" @update="updateExam(exam, index)"></mt-exam-body>
     </mt-collapsible>
-    <b-modal id="modalDeleteExam"
-             ref="modal"
-             title="Изтрий изпит"
-             @ok="deleteExam"
-             ok-title="Да"
-             cancel-title="Откажи"
-    >
-      <mt-confirm-delete :question="modalTitle"
-                         :data="examDescription"></mt-confirm-delete>
-    </b-modal>
+    <!--<b-modal id="modalDeleteExam"-->
+    <!--ref="modal"-->
+    <!--title="Изтрий изпит"-->
+    <!--@ok="deleteExam"-->
+    <!--ok-title="Да"-->
+    <!--cancel-title="Откажи"-->
+    <!--&gt;-->
+    <!--<mt-confirm-delete :question="modalTitle"-->
+    <!--:data="examDescription"></mt-confirm-delete>-->
+    <!--</b-modal>-->
   </div>
 </template>
 
@@ -42,23 +42,26 @@
       exams() {
         return this.$store.state.exams;
       },
-      examDescription() {
-        const description =
-          `${this.$store.state.currentExam.subjectName} <br> Вариант: ${this.$store.state.currentExam.variant}`;
-        return description;
-      },
+      // examDescription() {
+      //   const description =
+      //     `${this.$store.state.currentExam.subjectName} <br> Вариант: ${this.$store.state.currentExam.variant}`;
+      //   return description;
+      // },
     },
     data() {
       return {
-        modalTitle: 'Сигурен ли си, че искаш да изтриеш',
+        // modalTitle: 'Сигурен ли си, че искаш да изтриеш',
       };
     },
     methods: {
       getExams() {
         this.$store.dispatch(actions.GET_EXAMS);
       },
-      deleteExam() {
-        this.$store.dispatch(actions.DELETE_EXAM, this.$store.state.currentExam._id);
+      deleteExam(exam) {
+        this.$store.dispatch(actions.DELETE_EXAM, exam._id);
+      },
+      updateExam(exam, index) {
+        this.$store.dispatch(actions.UPDATE_EXAM, {exam, index});
       },
     },
   };
@@ -81,8 +84,8 @@
       }
       &.active {
         background-color: #545454;
-         color: #fff;
-       }
+        color: #fff;
+      }
     }
     .add-exam-icon {
       color: #3ed271;
