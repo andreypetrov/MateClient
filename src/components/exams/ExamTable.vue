@@ -18,12 +18,14 @@
       <b-button type="button" variant="success" @click="updateExam" size="sm">Запази</b-button>
     </div>
     <mt-add-question v-show="isToggled"
-                     :defaultQuestion="newQuestion"
+                     :question="newQuestion"
                      @add="add"
                      class="mb-3"
 
     ></mt-add-question>
 
+    <mt-add-question :key="question._id" v-for="question in examClone.questions" :question="question">
+    </mt-add-question>
 
     <b-table :fields="fields"
              :items="examClone.questions"
