@@ -3,7 +3,7 @@
     <b-form-radio-group @input="select"
                         v-model="selected"
                         class="answer-form">
-      <div :key="item._id" v-for="item in items" class="d-flex holder align-items-center"
+      <div :key="item._id" v-for="item in value" class="d-flex holder align-items-center"
            v-bind:class="getSelectedClass(item._id)">
         <span class="d-inline-block id">{{item._id}})</span>
         <b-form-radio :value="item._id" class="ml-2 mr-0">
@@ -27,25 +27,18 @@
     name: 'mt-edit-radio-button-group',
     components: {MtInput},
 
-    data() {
-      return {
-        items: this.value,
-        selected: this.initialSelection,
-      };
-    },
     props: {
       placeholder: String,
       label: String,
       value: Array,
-      initialSelection: String,
+      selected: String,
     },
     methods: {
       input() {
-        this.$emit('input', this.items);
+        this.$emit('input', this.value);
       },
-      select(event) { //propagate up the answer selection
-        this.selected = event;
-        this.$emit('select', event);
+      select(selected) { //propagate up the answer selection
+        this.$emit('select', selected);
       },
       getSelectedClass(id) {
         if (id === this.selected) {

@@ -36,7 +36,7 @@
         <mt-edit-radio-button-group label="Отговори"
                                     v-model="value.answers"
                                     @select="selectAnswer"
-                                    :initialSelection="value.correctAnswer"
+                                    :selected="value.correctAnswer"
                                     placeholder="Въведи отговор"
                                     @input="input">
         </mt-edit-radio-button-group>
@@ -79,7 +79,8 @@
         this.$emit('add', this.value);
       },
       selectAnswer(correctAnswer) {
-        this.localQuestion.correctAnswer = correctAnswer;
+        this.value.correctAnswer = correctAnswer;
+        this.input();
       },
     },
   };
