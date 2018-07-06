@@ -50,6 +50,7 @@
       },
       add(question) {
         this.exam.questions.push(question.deepCopy());
+        this.newQuestion = new DefaultQuestion();
       },
       changeQuestion(question, index) {
         this.exam.questions.splice(index, 1, question);
