@@ -134,15 +134,14 @@ export default {
       },
     );
   },
-  [actions.UPDATE_EXAM]({commit}, examData) {
-    console.log('EXAM DATA', examData);
+  [actions.UPDATE_EXAM]({commit}, {exam, index}) {
     commit(mutations.SET_LOADER, true);
     dataService.updateExam(
-      examData.exam._id,
-      examData.exam,
+      exam._id,
+      exam,
       (responseExam) => {
         commit(mutations.UPDATE_EXAM, {
-          index: examData.index,
+          index,
           exam: responseExam,
         });
         commit(mutations.SET_LOADER, false);
@@ -153,12 +152,12 @@ export default {
       },
     );
   },
-  [actions.DELETE_EXAM]({commit}, examId) {
+  [actions.DELETE_EXAM]({commit}, {examId, index}) {
     commit(mutations.SET_LOADER, true);
     dataService.deleteExam(
       examId,
       () => {
-        commit(mutations.DELETE_EXAM, examId);
+        commit(mutations.DELETE_EXAM, index);
         commit(mutations.SET_LOADER, false);
       },
       (error) => {

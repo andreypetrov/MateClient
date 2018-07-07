@@ -6,10 +6,13 @@ export default {
     state.students.filter(student => student._id !== id),
   getExamById: state => id =>
     state.exams.find(exam => exam._id === id),
-  getExamIndexById: state => (id) => {
+  getExamIndexById: state => (id) => { //TODO check for correctness, seems suspicious
     for (let i = 0; i < state.exams.length; i += 1) {
-      if (state.exams[i]._id === id) return i;
+      if (state.exams[i]._id === id) {
+        return i;
+      }
     }
+    console.log('INDEX IS: ', -1);
     return -1;
   },
 };

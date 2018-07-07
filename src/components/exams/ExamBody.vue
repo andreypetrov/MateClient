@@ -6,7 +6,7 @@
                 size="sm"
                 class="mr-2"
                 variant="danger"
-                v-b-modal.modalDeleteExam
+                @click="deleteExam"
       >Изтрий изпит
       </b-button>
       <b-button
@@ -81,6 +81,9 @@
       },
       updateExam() {
         this.$emit('update', this.exam);
+      },
+      deleteExam() {
+        this.$emit('delete', this.exam);
       },
       selectAnswer(id, question) {
         console.log('TODO handle selection of answer to localQuestion', id, question);
