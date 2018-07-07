@@ -22,9 +22,9 @@
   .base-container {
     border: 1px solid rgba(0,0,0,0.1);
     background-color: #545454;
+    color: #dedede;
   }
   h3 {
-    color: #dedede;
     font-weight: normal;
     text-transform: uppercase;
     line-height: 17px;

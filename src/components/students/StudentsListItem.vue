@@ -2,7 +2,7 @@
   <div class="list-group-item p-2">
     <img class="student-avatar" :src="getAvatar">
     <span class="user-info">
-      <span class="user-group m-2 p-1">{{ group }}</span>
+      <span class="user-group m-2 p-1 text-info bg-dark">{{ group }}</span>
       <span class="user-name">{{ name }}</span>
       <div class="buttons-container">
         <span class="view-results mr-2 p-1"
@@ -10,7 +10,7 @@
         >
           <i class="fa fa-bar-chart" aria-hidden="true"></i>
         </span>
-        <span class="remove-student"
+        <span class="remove-item"
               @click="setCurrentStudent"
               v-b-modal.modalDeleteStudent>
           <i class="fa fa-times" aria-hidden="true"></i>
@@ -85,10 +85,7 @@
   }
 
   .user-group {
-    color: #289e9b;
-    background-color: white;
     border-radius: 4px;
-    border: 1px solid #e6e6e6;
   }
 
   .buttons-container {
@@ -106,14 +103,4 @@
     cursor: pointer;
   }
 
-  .remove-student {
-    border-radius: 50%;
-    background-color: #c5c5c5;
-    padding: 2px 5px;
-    color: #fff;
-    cursor: pointer;
-  }
-  .remove-student:hover {
-    background-color: #e5001e;
-  }
 </style>

@@ -1,5 +1,11 @@
 <template>
   <b-form @submit.prevent="submit" class="px-3 py-2 question">
+    <span class="remove-item"
+          v-if="hasRemoveButton"
+          @click="remove"
+    >
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </span>
     <div class="row">
       <div v-if="getQuestionNumber" class="question-counter">
         <span>{{getQuestionNumber}}</span>
@@ -60,6 +66,7 @@
     components: {MtEditRadioButtonGroup, MtLabeledInput, MtLabeledTextArea},
     props: {
       hasAddButton: Boolean,
+      hasRemoveButton: Boolean,
       value: Object,
       index: Number,
     },
@@ -78,6 +85,9 @@
       submit() {
         this.$emit('add', this.value);
       },
+      remove() {
+        this.$emit('remove', this.index);
+      },
       selectAnswer(correctAnswer) {
         this.value.correctAnswer = correctAnswer;
         this.input();
@@ -85,3 +95,18 @@
     },
   };
 </script>
+
+<style scoped lang="scss">
+  .question {
+    position: relative;
+    .remove-item {
+      position: absolute;
+      right: 0.75rem;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      padding: 0;
+      z-index: 1000;
+    }
+  }
+</style>

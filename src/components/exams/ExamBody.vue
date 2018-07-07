@@ -20,24 +20,33 @@
       </b-button>
       <b-button type="button" variant="success" size="sm" @click="updateExam">Запази</b-button>
     </div>
-    <mt-labeled-input label="Предмет"
-                      size="sm"
-                      v-model="exam.subjectName"
-                      class="category-input"
-                      placeholder="Въведи предмет"
-    ></mt-labeled-input>
-    <mt-labeled-input label="Код на предмет"
-                      size="sm"
-                      v-model="exam.subjectCode"
-                      class="category-input"
-                      placeholder="Въведи код на предмет"
-    ></mt-labeled-input>
-    <mt-labeled-input label="Вариант"
-                      size="sm"
-                      v-model="exam.variant"
-                      class="category-input"
-                      placeholder="Въведи вариант"
-    ></mt-labeled-input>
+    <div class="row">
+      <div class="col-md-2">
+        <mt-labeled-input label="Код на предмет"
+                          size="sm"
+                          v-model="exam.subjectCode"
+                          class="category-input"
+                          placeholder="Въведи код на предмет"
+        ></mt-labeled-input>
+      </div>
+      <div class="col-md-8">
+        <mt-labeled-input label="Предмет"
+                          size="sm"
+                          v-model="exam.subjectName"
+                          class="category-input"
+                          placeholder="Въведи предмет"
+        ></mt-labeled-input>
+      </div>
+      <div class="col-md-2">
+        <mt-labeled-input label="Вариант"
+                          size="sm"
+                          v-model="exam.variant"
+                          class="category-input"
+                          placeholder="Въведи вариант"
+        ></mt-labeled-input>
+      </div>
+    </div>
+
     <mt-add-question v-show="isToggled"
                      :value="newQuestion"
                      @add="addQuestion"
@@ -50,6 +59,8 @@
                        :key="question._id"
                        v-for="(question, index) in exam.questions"
                        :value="question"
+                       :hasRemoveButton="true"
+                       @remove="removeQuestion($event, index)"
                        :index="index"
                        @input="changeQuestion($event, index)">
       </mt-add-question>
@@ -75,6 +86,9 @@
       addQuestion(question) {
         this.newQuestion = new DefaultQuestion();
         this.exam.questions.push(question);
+      },
+      removeQuestion(index) {
+        this.exam.questions.splice(index, 1);
       },
       toggleAddQuestion() {
         this.isToggled = !this.isToggled;

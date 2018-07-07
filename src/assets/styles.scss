@@ -80,8 +80,8 @@
 .question-counter {
   span {
     background: #3ba961;
-    padding: 0px 7px 1px 7px;
-    font-size: 0.7rem;
+    padding: 0px 7px 3px 7px;
+    font-size: 0.75rem;
     margin-left: 10px;
     border-radius: 5px;
     display: inline-block;
@@ -106,4 +106,15 @@
       margin-top: 5px;
     }
   }
+}
+
+.remove-item {
+  border-radius: 50%;
+  background-color: #c5c5c5;
+  padding: 2px 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.remove-item:hover {
+  background-color: #e5001e;
 }
