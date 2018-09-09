@@ -46,6 +46,16 @@
         ></mt-labeled-input>
       </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <mt-labeled-input label="Карта"
+                          size="sm"
+                          v-model="exam.map"
+                          class="category-input"
+                          placeholder="Въведи карта"
+        ></mt-labeled-input>
+      </div>
+    </div>
 
     <mt-add-question v-show="isToggled"
                      :value="newQuestion"

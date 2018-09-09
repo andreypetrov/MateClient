@@ -1,7 +1,10 @@
+import uuid4 from 'uuid/v4';
+
 /* eslint no-underscore-dangle: 0 */
 export default class {
   constructor() {
     this.text = '';
+    this._id = uuid4();
     this.imageUrl = '';
     this.correctAnswer = 'a';
     this.category = '';
@@ -23,6 +26,7 @@ export default class {
 
   deepCopy() {
     const copy = {};
+    copy._id = this._id;
     copy.text = this.text;
     copy.imageUrl = this.imageUrl;
     copy.category = this.category;

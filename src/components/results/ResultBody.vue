@@ -155,9 +155,13 @@
         return 'warning-label';
       },
       calculatePercentage(score) {
-        let result = score.split(' out of ');
-        result = (result[0] / result[1]) * 100;
-        const percentage = parseFloat(result).toFixed(2);
+        let percentage = '0.00';
+        if (score) {
+          let result = score.split(' out of ');
+          result = (result[0] / result[1]) * 100;
+          percentage = parseFloat(result).toFixed(2);
+        }
+
         return percentage;
       },
       getEvaluationClass(givenAnswer, correctAnswer) {

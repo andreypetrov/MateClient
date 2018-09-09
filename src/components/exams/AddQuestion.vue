@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="row" v-if="hasAddButton">
-      <div class="col">
+      <div class="col text-right">
         <b-button type="submit" text-variant="gray-lighter">Добави</b-button>
       </div>
     </div>
