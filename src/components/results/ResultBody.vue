@@ -157,7 +157,7 @@
       calculatePercentage(score) {
         let percentage = '0.00';
         if (score) {
-          let result = score.split(' out of ');
+          let result = score.split('/');
           result = (result[0] / result[1]) * 100;
           percentage = parseFloat(result).toFixed(2);
         }
